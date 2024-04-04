@@ -1,5 +1,7 @@
 package at.fhv.lab1;
 
+import at.fhv.lab1.commandclient.domain.Customer;
+import at.fhv.lab1.commandclient.domain.Room;
 import at.fhv.lab1.eventbus.events.Event;
 import at.fhv.lab1.eventbus.events.RoomBookedEvent;
 import org.springframework.boot.CommandLineRunner;
@@ -34,12 +36,15 @@ public class CommandClientApplication {
             event.setTimestamp(System.currentTimeMillis());
             System.out.println("Result: " + publisher.publishEvent(event));
 
+            /*
             RoomBookedEvent rbevent = new RoomBookedEvent();
-            rbevent.setCustomer("Test");
-            rbevent.setDuration(12343214);
+            rbevent.setCustomer(new Customer());
+            rbevent.setTimestampStart(12343214);
             rbevent.setBookingID(1);
-            rbevent.setRoomID(5);
+            rbevent.setRoom(new Room());
             publisher.publishEvent(rbevent);
+
+             */
         };
     }
 }

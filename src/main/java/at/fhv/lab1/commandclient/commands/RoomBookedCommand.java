@@ -1,10 +1,11 @@
-package at.fhv.lab1.eventbus.events;
+package at.fhv.lab1.commandclient.commands;
 
 import at.fhv.lab1.commandclient.domain.Booking;
 import at.fhv.lab1.commandclient.domain.Customer;
 import at.fhv.lab1.commandclient.domain.Room;
 
-public class RoomBookedEvent {
+public class RoomBookedCommand {
+
     private Booking booking;
     private Customer customer;
     private Room room;
@@ -27,14 +28,6 @@ public class RoomBookedEvent {
         this.customer = customer;
     }
 
-    public Room getRoom() {
-        return room;
-    }
-
-    public void setRoom(Room room) {
-        this.room = room;
-    }
-
     public long getTimestampStart() {
         return timestampStart;
     }
@@ -51,14 +44,22 @@ public class RoomBookedEvent {
         this.timestampEnd = timestampEnd;
     }
 
+    public Room getRoom() {
+        return room;
+    }
+
+    public void setRoom(Room room) {
+        this.room = room;
+    }
+
     @Override
     public String toString() {
-        return "RoomBookedEvent{" +
+        return "RoomBookedCommand{" +
                 "booking=" + booking +
                 ", customer=" + customer +
-                ", room=" + room +
                 ", timestampStart=" + timestampStart +
                 ", timestampEnd=" + timestampEnd +
+                ", room=" + room +
                 '}';
     }
 }
