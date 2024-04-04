@@ -9,8 +9,12 @@ public class Customer {
     private String email;
     private String address;
 
-    public Customer() {
+    public Customer(String firstname, String surname, String email, String address) {
         id = idCounter++;
+        this.firstname = firstname;
+        this.surname = surname;
+        this.email = email;
+        this.address = address;
     }
 
     public int getId() {

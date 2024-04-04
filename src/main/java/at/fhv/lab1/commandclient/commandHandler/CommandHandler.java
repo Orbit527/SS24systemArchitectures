@@ -19,9 +19,9 @@ public class CommandHandler {
 
         //TODO: Validate before creating event
 
+        //TODO: make sure error is thrown, when there is no user with id
 
         RoomBookedEvent roomBookedEvent = new RoomBookedEvent();
-
 
         roomBookedEvent.setCustomer(r.getCustomer());
         roomBookedEvent.setRoom(r.getRoom());
@@ -29,18 +29,9 @@ public class CommandHandler {
         roomBookedEvent.setTimestampStart(r.getTimestampStart());
         roomBookedEvent.setTimestampEnd(r.getTimestampEnd());
 
-        //System.out.println(roomBookedEvent);
+        System.out.println(roomBookedEvent);
 
         System.out.println("BookRoomEvent: " + eventPublisher.publishEvent(roomBookedEvent));
-
-/*
-        roomBookedEvent.setCustomer("adsfa");
-        roomBookedEvent.setRoomID(1234);
-        roomBookedEvent.setBookingID(123); //TODO: add real parameters
-        roomBookedEvent.setDuration(345621354);
-*/
-
-
 
         return true;
     }

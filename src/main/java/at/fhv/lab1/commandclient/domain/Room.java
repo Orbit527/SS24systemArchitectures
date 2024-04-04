@@ -9,8 +9,12 @@ public class Room {
     private int floor;
     private int capacity;
 
-    public Room() {
+    public Room(int roomNr, boolean currentlyBooked, int floor, int capacity) {
         id = idCounter++;
+        this.roomNr = roomNr;
+        this.currentlyBooked = currentlyBooked;
+        this.floor = floor;
+        this.capacity = capacity;
     }
 
     public int getId() {
