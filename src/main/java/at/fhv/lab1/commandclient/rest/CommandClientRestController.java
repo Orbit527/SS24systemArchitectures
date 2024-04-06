@@ -2,6 +2,7 @@ package at.fhv.lab1.commandclient.rest;
 
 import at.fhv.lab1.commandclient.EventPublisher;
 import at.fhv.lab1.commandclient.commandHandler.CommandHandler;
+import at.fhv.lab1.commandclient.commands.CreateCustomerCommand;
 import at.fhv.lab1.commandclient.commands.RoomBookedCommand;
 import at.fhv.lab1.commandclient.database.BookingDB;
 import at.fhv.lab1.commandclient.database.CustomerDB;
@@ -36,7 +37,7 @@ public class CommandClientRestController {
 
     @PostMapping(value = "/createBooking", consumes = "application/json")
     public boolean addBooking(@RequestBody BookingRest bookingRest) {
-        System.out.println("Booking received: " + bookingRest);
+        System.out.println("Booking POST received: " + bookingRest);
 
         //TODO: create some more mock data
 
@@ -62,7 +63,7 @@ public class CommandClientRestController {
         if (commandHandler.handleRoomBookedCommand(command)) {
             BookingDB.addBooking(booking);
         } else {
-            System.out.println("Something went wrong when creating the Event");
+            System.out.println("Something went wrong trying to create createBooking Event");
         };
 
         return true;
@@ -70,35 +71,24 @@ public class CommandClientRestController {
 
     @PostMapping(value = "/createCustomer", consumes = "application/json")
     public boolean createCustomer(@RequestBody Customer customer) {
-        System.out.println("Booking received: " +  customer);
-
-        //TODO: create some more mock data
-
-        //Convert to real Booking Object
-        /*
-        Booking booking = new Booking();
-        booking.setCustomer(customers.get(bookingRest.getCustomerId())); //TODO: set real Customer from ID
-        booking.setRoom(rooms.get(bookingRest.getRoomID()));    //TODO: set real Room from ID
-        booking.setTimestampStart(bookingRest.getTimestampStart());
-        booking.setTimestampEnd(bookingRest.getTimestampEnd());
-
-
+        System.out.println("Create Customer POST received: " +  customer);
+        
         //Create new Command
-        RoomBookedCommand command = new RoomBookedCommand();
-        command.setBooking(booking); //TODO real param
-        command.setCustomer(booking.getCustomer()); //TODO real param
-        command.setRoom(booking.getRoom());    //TODO real param
-        command.setTimestampStart(booking.getTimestampStart());
-        command.setTimestampEnd(booking.getTimestampEnd());
+        CreateCustomerCommand command = new CreateCustomerCommand();
+        command.setFirstname(customer.getFirstname());
+        command.setSurname(customer.getSurname());
+        command.setEmail(customer.getEmail());
+        command.setAddress(customer.getAddress());
 
         //Send command to CommandHandler
-        if (commandHandler.handleRoomBookedCommand(command)) {
-            bookings.add(booking);
+        if (commandHandler.handleCreateCustomerCommand(command)) {
+            CustomerDB.addCustomer(customer);
+            System.out.println(CustomerDB.getCustomers());
         } else {
-            System.out.println("Something went wrong, when creating the Event");
+            System.out.println("Something went wrong trying to create createCustomer Event");
         };
 
-         */
+
 
         return true;
     }

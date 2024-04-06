@@ -4,6 +4,7 @@ import at.fhv.lab1.commandclient.domain.Booking;
 import at.fhv.lab1.commandclient.domain.Customer;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class CustomerDB {
 

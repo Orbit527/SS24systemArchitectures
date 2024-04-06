@@ -1,6 +1,7 @@
 package at.fhv.lab1.commandclient.commandHandler;
 
 import at.fhv.lab1.commandclient.EventPublisher;
+import at.fhv.lab1.commandclient.commands.CreateCustomerCommand;
 import at.fhv.lab1.commandclient.commands.RoomBookedCommand;
 import at.fhv.lab1.commandclient.database.BookingDB;
 import at.fhv.lab1.commandclient.database.CustomerDB;
@@ -11,6 +12,7 @@ import at.fhv.lab1.eventbus.events.RoomBookedEvent;
 
 import javax.sound.midi.SysexMessage;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class CommandHandler {
 
@@ -29,7 +31,7 @@ public class CommandHandler {
 
         //TODO: check booking by timestamp, not by boolean
         if(RoomDB.getRoomById(r.getRoom().getId()).isCurrentlyBooked() == true) {
-            System.out.println("Room is already booked");
+            System.out.println("Room is already booked!");
             return false;
         }
 
@@ -44,7 +46,7 @@ public class CommandHandler {
         roomBookedEvent.setTimestampStart(r.getTimestampStart());
         roomBookedEvent.setTimestampEnd(r.getTimestampEnd());
 
-        System.out.println(roomBookedEvent);
+        //System.out.println(roomBookedEvent);
 
 
 
@@ -59,4 +61,24 @@ public class CommandHandler {
         //TODO: sent true or false, if something fails or not
         return true;
     }
+
+    public boolean handleCreateCustomerCommand(CreateCustomerCommand c) {
+
+
+        //Customer Email exists validation
+        for(Customer cust : CustomerDB.getCustomers()) {
+            if (Objects.equals(cust.getEmail(), c.getEmail())) {
+                System.out.println("Customer with that email already exists!");
+                return false;
+            }
+        }
+
+        //TODO: further Validation
+
+        //TODO: Create Event and send to EventBus
+
+        return true;
+
+    }
+
 }
