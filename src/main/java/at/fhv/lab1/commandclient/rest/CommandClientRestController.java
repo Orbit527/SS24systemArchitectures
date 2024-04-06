@@ -72,7 +72,7 @@ public class CommandClientRestController {
     @PostMapping(value = "/createCustomer", consumes = "application/json")
     public boolean createCustomer(@RequestBody Customer customer) {
         System.out.println("Create Customer POST received: " +  customer);
-        
+
         //Create new Command
         CreateCustomerCommand command = new CreateCustomerCommand();
         command.setFirstname(customer.getFirstname());
