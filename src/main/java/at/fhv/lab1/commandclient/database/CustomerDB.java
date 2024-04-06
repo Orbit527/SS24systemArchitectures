@@ -1,12 +1,13 @@
 package at.fhv.lab1.commandclient.database;
 
+import at.fhv.lab1.commandclient.domain.Booking;
 import at.fhv.lab1.commandclient.domain.Customer;
 
 import java.util.ArrayList;
 
 public class CustomerDB {
 
-    private ArrayList<Customer> customers;
+    private static ArrayList<Customer> customers;
 
     public CustomerDB() {
 
@@ -18,15 +19,24 @@ public class CustomerDB {
 
     }
 
-    public ArrayList<Customer> getCustomers() {
+    public static ArrayList<Customer> getCustomers() {
         return customers;
     }
 
-    public void addCustomer(Customer customer) {
+    public static Customer getCustomerById(int id) {
+        for(Customer c: customers) {
+            if(c.getId() == id) {
+                return c;
+            }
+        }
+        return null;
+    }
+
+    public static void addCustomer(Customer customer) {
         customers.add(customer);
     }
 
-    public void removeCustomer(Customer customer) {
+    public static void removeCustomer(Customer customer) {
         customers.remove(customer);
     }
 }

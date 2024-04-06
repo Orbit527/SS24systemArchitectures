@@ -27,17 +27,11 @@ public class CommandClientRestController {
 
     private final CommandHandler commandHandler;
     CustomerDB customerDB = new CustomerDB();
-    private final ArrayList<Customer> customers;
     RoomDB roomsDB = new RoomDB();
-    private final ArrayList<Room> rooms;
     BookingDB bookingDB = new BookingDB();
-    private final ArrayList<Booking> bookings;
 
     public CommandClientRestController() {
         commandHandler = new CommandHandler();
-        customers = customerDB.getCustomers();
-        rooms = roomsDB.getRooms();
-        bookings = bookingDB.getBookings();
     }
 
     @PostMapping(value = "/createBooking", consumes = "application/json")
@@ -48,25 +42,27 @@ public class CommandClientRestController {
 
         //Convert to real Booking Object
         Booking booking = new Booking();
-        booking.setCustomer(customers.get(bookingRest.getCustomerId())); //TODO: set real Customer from ID
-        booking.setRoom(rooms.get(bookingRest.getRoomID()));    //TODO: set real Room from ID
+        //booking.setCustomer(customers.get(bookingRest.getCustomerId())); //TODO: set real Customer from ID
+        booking.setCustomer(CustomerDB.getCustomerById(bookingRest.getCustomerId()));
+        //booking.setRoom(rooms.get(bookingRest.getRoomID()));    //TODO: set real Room from ID
+        booking.setRoom(RoomDB.getRoomById(bookingRest.getRoomID()));    //TODO: set real Room from ID
         booking.setTimestampStart(bookingRest.getTimestampStart());
         booking.setTimestampEnd(bookingRest.getTimestampEnd());
 
 
         //Create new Command
         RoomBookedCommand command = new RoomBookedCommand();
-        command.setBooking(booking); //TODO real param
-        command.setCustomer(booking.getCustomer()); //TODO real param
-        command.setRoom(booking.getRoom());    //TODO real param
+        command.setBooking(booking);
+        command.setCustomer(booking.getCustomer());
+        command.setRoom(booking.getRoom());
         command.setTimestampStart(booking.getTimestampStart());
         command.setTimestampEnd(booking.getTimestampEnd());
 
         //Send command to CommandHandler
         if (commandHandler.handleRoomBookedCommand(command)) {
-            bookings.add(booking);
+            BookingDB.addBooking(booking);
         } else {
-            System.out.println("Something went wrong, when creating the Event");
+            System.out.println("Something went wrong when creating the Event");
         };
 
         return true;

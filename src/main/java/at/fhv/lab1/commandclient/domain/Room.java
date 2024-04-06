@@ -10,7 +10,7 @@ public class Room {
     private int capacity;
 
     public Room(int roomNr, boolean currentlyBooked, int floor, int capacity) {
-        id = idCounter++;
+        this.id = idCounter++;
         this.roomNr = roomNr;
         this.currentlyBooked = currentlyBooked;
         this.floor = floor;
@@ -36,6 +36,7 @@ public class Room {
     public void setCurrentlyBooked(boolean currentlyBooked) {
         this.currentlyBooked = currentlyBooked;
     }
+
 
     public int getFloor() {
         return floor;

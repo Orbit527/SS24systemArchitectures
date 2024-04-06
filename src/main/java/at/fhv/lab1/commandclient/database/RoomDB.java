@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class RoomDB {
 
-    private ArrayList<Room> rooms;
+    private static ArrayList<Room> rooms;
 
     public RoomDB() {
         rooms = new ArrayList<>();
@@ -20,15 +20,24 @@ public class RoomDB {
         rooms.add(new Room(21, false, 2, 2));
     }
 
-    public ArrayList<Room> getRooms() {
+    public static ArrayList<Room> getRooms() {
         return rooms;
     }
 
-    public void addRoom(Room room) {
+    public static Room getRoomById(int id) {
+        for(Room r : rooms) {
+            if(r.getId() == id) {
+                return r;
+            }
+        }
+        return null;
+    }
+
+    public static void addRoom(Room room) {
         rooms.add(room);
     }
 
-    public void removeRoom(Room room) {
+    public static void removeRoom(Room room) {
         rooms.remove(room);
     }
 

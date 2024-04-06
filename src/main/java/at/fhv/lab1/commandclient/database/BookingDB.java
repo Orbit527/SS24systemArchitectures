@@ -2,26 +2,36 @@ package at.fhv.lab1.commandclient.database;
 
 import at.fhv.lab1.commandclient.domain.Booking;
 import at.fhv.lab1.commandclient.domain.Customer;
+import at.fhv.lab1.commandclient.domain.Room;
 
 import java.util.ArrayList;
 
 public class BookingDB {
 
-    private ArrayList<Booking> bookings;
+    private static ArrayList<Booking> bookings;
 
     public BookingDB() {
         bookings = new ArrayList<>();
     }
 
-    public ArrayList<Booking> getBookings() {
+    public static ArrayList<Booking> getBookings() {
         return bookings;
     }
 
-    public void addBooking(Booking booking) {
+    public static Booking getBookingById(int id) {
+        for(Booking b : bookings) {
+            if(b.getId() == id) {
+                return b;
+            }
+        }
+        return null;
+    }
+
+    public static void addBooking(Booking booking) {
         bookings.add(booking);
     }
 
-    public void removeBooking(Booking booking) {
+    public static void removeBooking(Booking booking) {
         bookings.remove(booking);
     }
 
