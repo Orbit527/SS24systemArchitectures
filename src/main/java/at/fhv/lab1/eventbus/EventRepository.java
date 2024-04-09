@@ -27,6 +27,7 @@ public class EventRepository {
         // Testing Shenanigans
         getAllFromEventDatabase();
 
+        System.out.println("AHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH");
         // TODO: notify subscribed read repositories
         System.out.println("Processing Event");
     }
