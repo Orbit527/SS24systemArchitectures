@@ -58,6 +58,7 @@ public class CommandClientApplication {
             RoomDB.addRoom(new Room(21, 2, 2));
 
             //TODO: add more, when all events are implemented!!
+
             RoomBookedEvent roomBookedEvent = new RoomBookedEvent();
 
             Customer c = new Customer("Hans", "Joerg", "hans.joerg@email.com", "strasse 123");
@@ -76,6 +77,8 @@ public class CommandClientApplication {
 
             publisher.publishEvent(roomBookedEvent);
             BookingDB.addBooking(b);
+
+
 
         };
     }
