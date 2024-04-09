@@ -5,14 +5,12 @@ public class Room {
     private static int idCounter;
     private final int id;
     private int roomNr;
-    private boolean currentlyBooked;
     private int floor;
     private int capacity;
 
-    public Room(int roomNr, boolean currentlyBooked, int floor, int capacity) {
+    public Room(int roomNr, int floor, int capacity) {
         this.id = idCounter++;
         this.roomNr = roomNr;
-        this.currentlyBooked = currentlyBooked;
         this.floor = floor;
         this.capacity = capacity;
     }
@@ -28,15 +26,6 @@ public class Room {
     public void setRoomNr(int roomNr) {
         this.roomNr = roomNr;
     }
-
-    public boolean isCurrentlyBooked() {
-        return currentlyBooked;
-    }
-
-    public void setCurrentlyBooked(boolean currentlyBooked) {
-        this.currentlyBooked = currentlyBooked;
-    }
-
 
     public int getFloor() {
         return floor;
@@ -59,7 +48,6 @@ public class Room {
         return "Room{" +
                 "id=" + id +
                 ", roomNr=" + roomNr +
-                ", currentlyBooked=" + currentlyBooked +
                 ", floor=" + floor +
                 ", capacity=" + capacity +
                 '}';

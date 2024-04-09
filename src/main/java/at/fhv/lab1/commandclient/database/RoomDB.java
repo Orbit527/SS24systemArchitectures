@@ -11,13 +11,6 @@ public class RoomDB {
 
     public RoomDB() {
         rooms = new ArrayList<>();
-        rooms.add(new Room(1, false, 0, 2));
-        rooms.add(new Room(2, true, 0, 4));
-        rooms.add(new Room(3, false, 0, 3));
-        rooms.add(new Room(11, true, 1, 1));
-        rooms.add(new Room(12, false, 1, 1));
-        rooms.add(new Room(13, false, 1, 6));
-        rooms.add(new Room(21, false, 2, 2));
     }
 
     public static ArrayList<Room> getRooms() {

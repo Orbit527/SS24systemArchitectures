@@ -5,9 +5,10 @@ public class Booking {
     private static int idCounter;
     private final int id;
     private Customer customer;
+    private Room room;
     private long timestampStart;
     private long timestampEnd;
-    private Room room;
+
 
     public Booking() {
         id = idCounter++;

@@ -1,6 +1,5 @@
 package at.fhv.lab1.commandclient.rest;
 
-import at.fhv.lab1.commandclient.EventPublisher;
 import at.fhv.lab1.commandclient.commandHandler.CommandHandler;
 import at.fhv.lab1.commandclient.commands.CreateCustomerCommand;
 import at.fhv.lab1.commandclient.commands.RoomBookedCommand;
@@ -10,26 +9,14 @@ import at.fhv.lab1.commandclient.database.RoomDB;
 import at.fhv.lab1.commandclient.domain.Booking;
 import at.fhv.lab1.commandclient.domain.BookingRest;
 import at.fhv.lab1.commandclient.domain.Customer;
-import at.fhv.lab1.commandclient.domain.Room;
-import at.fhv.lab1.eventbus.events.Event;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.client.RestTemplate;
-
-import java.util.ArrayList;
 
 @RestController
 public class CommandClientRestController {
 
     private final CommandHandler commandHandler;
-    CustomerDB customerDB = new CustomerDB();
-    RoomDB roomsDB = new RoomDB();
-    BookingDB bookingDB = new BookingDB();
 
     public CommandClientRestController() {
         commandHandler = new CommandHandler();
@@ -39,12 +26,11 @@ public class CommandClientRestController {
     public boolean addBooking(@RequestBody BookingRest bookingRest) {
         System.out.println("Booking POST received: " + bookingRest);
 
-        //TODO: create some more mock data
-
         //Convert to real Booking Object
         Booking booking = new Booking();
         //booking.setCustomer(customers.get(bookingRest.getCustomerId())); //TODO: set real Customer from ID
-        booking.setCustomer(CustomerDB.getCustomerById(bookingRest.getCustomerId()));
+        booking.setCustomer(CustomerDB.getCustomerById(bookingRest.getCustomerID()));
+        System.out.println("CUSTOMER FIRSTNAME:" + CustomerDB.getCustomerById(bookingRest.getCustomerID()));
         //booking.setRoom(rooms.get(bookingRest.getRoomID()));    //TODO: set real Room from ID
         booking.setRoom(RoomDB.getRoomById(bookingRest.getRoomID()));    //TODO: set real Room from ID
         booking.setTimestampStart(bookingRest.getTimestampStart());

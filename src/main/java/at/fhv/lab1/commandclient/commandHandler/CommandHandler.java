@@ -30,10 +30,13 @@ public class CommandHandler {
         //TODO: Validate before creating event
 
         //TODO: check booking by timestamp, not by boolean
+        /*
         if(RoomDB.getRoomById(r.getRoom().getId()).isCurrentlyBooked() == true) {
             System.out.println("Room is already booked!");
             return false;
         }
+
+         */
 
 
         //TODO: make sure error is thrown, when there is no user with id
@@ -51,7 +54,7 @@ public class CommandHandler {
 
 
         //set that Room is now booked
-        RoomDB.getRoomById(r.getRoom().getId()).setCurrentlyBooked(true);
+        //RoomDB.getRoomById(r.getRoom().getId()).setCurrentlyBooked(true);
 
         //System.out.println("ROOM WITH ID 0: " + RoomDB.getRoomById(2));
 

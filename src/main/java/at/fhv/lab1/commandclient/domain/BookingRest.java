@@ -2,7 +2,7 @@ package at.fhv.lab1.commandclient.domain;
 
 public class BookingRest {
 
-    private int customerId;
+    private int customerID;
     private long timestampStart;
     private long timestampEnd;
     private int roomID;
@@ -10,12 +10,12 @@ public class BookingRest {
     public BookingRest() {
     }
 
-    public int getCustomerId() {
-        return customerId;
+    public int getCustomerID() {
+        return customerID;
     }
 
-    public void setCustomerId(int customerId) {
-        this.customerId = customerId;
+    public void setCustomerID(int customerID) {
+        this.customerID = customerID;
     }
 
     public long getTimestampStart() {
@@ -45,7 +45,7 @@ public class BookingRest {
     @Override
     public String toString() {
         return "BookingRest{" +
-                "customerId=" + customerId +
+                "customerID=" + customerID +
                 ", timestampStart=" + timestampStart +
                 ", timestampEnd=" + timestampEnd +
                 ", roomID=" + roomID +
