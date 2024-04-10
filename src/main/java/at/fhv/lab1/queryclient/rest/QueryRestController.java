@@ -28,8 +28,8 @@ public class QueryRestController {
         bookingsProjected.setCapacity(event.getRoom().getCapacity());
         bookingsProjected.setCustomerFirstname(event.getCustomer().getFirstname());
         bookingsProjected.setCustomerSurname(event.getCustomer().getSurname());
-        bookingsProjected.setTimestampStart(event.getTimestampStart());
-        bookingsProjected.setTimestampEnd(event.getTimestampEnd());
+        bookingsProjected.setTimestampStart(event.getBookedStart());
+        bookingsProjected.setTimestampEnd(event.getBookedEnd());
         bookingsProjected.setRoomNr(event.getRoom().getRoomNr());
         bookingsProjected.setFloor(event.getRoom().getFloor());
 

@@ -55,8 +55,8 @@ public class CommandHandler {
         roomBookedEvent.setCustomer(r.getCustomer());
         roomBookedEvent.setRoom(r.getRoom());
         roomBookedEvent.setBooking(r.getBooking()); //TODO: add real parameters
-        roomBookedEvent.setTimestampStart(r.getTimestampStart());
-        roomBookedEvent.setTimestampEnd(r.getTimestampEnd());
+        roomBookedEvent.setBookedStart(r.getBookedStart());
+        roomBookedEvent.setBookedEnd(r.getBookedEnd());
 
         //System.out.println(roomBookedEvent);
 

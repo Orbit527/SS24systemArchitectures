@@ -6,7 +6,6 @@ import at.fhv.lab1.commandclient.database.RoomDB;
 import at.fhv.lab1.commandclient.domain.Booking;
 import at.fhv.lab1.commandclient.domain.Customer;
 import at.fhv.lab1.commandclient.domain.Room;
-import at.fhv.lab1.eventbus.events.Event;
 import at.fhv.lab1.eventbus.events.RoomBookedEvent;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -16,7 +15,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import at.fhv.lab1.commandclient.EventPublisher;
 
-import java.util.ArrayList;
+import java.time.LocalDate;
 
 @SpringBootApplication
 @Configuration
@@ -66,14 +65,14 @@ public class CommandClientApplication {
             Booking b = new Booking();
             b.setCustomer(c);
             b.setRoom(r);
-            b.setTimestampStart(572382903);
-            b.setTimestampEnd(859432783);
+            b.setBookedStart(LocalDate.parse("2024-04-10"));
+            b.setBookedEnd(LocalDate.parse("2024-04-15"));
 
             roomBookedEvent.setCustomer(c); //TODO: real customer
             roomBookedEvent.setRoom(r); //TODO: real parameters
             roomBookedEvent.setBooking(b); //TODO: add real parameters
-            roomBookedEvent.setTimestampStart(b.getTimestampStart());
-            roomBookedEvent.setTimestampEnd(b.getTimestampEnd());
+            roomBookedEvent.setBookedStart(b.getBookedStart());
+            roomBookedEvent.setBookedEnd(b.getBookedEnd());
 
             publisher.publishEvent(roomBookedEvent);
             BookingDB.addBooking(b);

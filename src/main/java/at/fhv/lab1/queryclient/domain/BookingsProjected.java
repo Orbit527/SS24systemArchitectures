@@ -1,9 +1,11 @@
 package at.fhv.lab1.queryclient.domain;
 
+import java.time.LocalDate;
+
 public class BookingsProjected {
 
-    private long timestampStart;
-    private long timestampEnd;
+    private LocalDate timestampStart;
+    private LocalDate timestampEnd;
     private String customerFirstname;
     private String customerSurname;
     private int roomNr;
@@ -14,7 +16,7 @@ public class BookingsProjected {
     public BookingsProjected() {
 
     }
-    public BookingsProjected(long timestampStart, long timestampEnd, String customerName, String customerSurname, int roomNr, int capacity, int floor) {
+    public BookingsProjected(LocalDate timestampStart, LocalDate timestampEnd, String customerName, String customerSurname, int roomNr, int capacity, int floor) {
         this.timestampStart = timestampStart;
         this.timestampEnd = timestampEnd;
         this.customerFirstname = customerName;
@@ -24,19 +26,19 @@ public class BookingsProjected {
         this.floor = floor;
     }
 
-    public long getTimestampStart() {
+    public LocalDate getTimestampStart() {
         return timestampStart;
     }
 
-    public void setTimestampStart(long timestampStart) {
+    public void setTimestampStart(LocalDate timestampStart) {
         this.timestampStart = timestampStart;
     }
 
-    public long getTimestampEnd() {
+    public LocalDate getTimestampEnd() {
         return timestampEnd;
     }
 
-    public void setTimestampEnd(long timestampEnd) {
+    public void setTimestampEnd(LocalDate timestampEnd) {
         this.timestampEnd = timestampEnd;
     }
 
@@ -80,9 +82,10 @@ public class BookingsProjected {
         this.floor = floor;
     }
 
+
     @Override
     public String toString() {
-        return "GetBookingsProjected{" +
+        return "BookingsProjected{" +
                 "timestampStart=" + timestampStart +
                 ", timestampEnd=" + timestampEnd +
                 ", customerFirstname='" + customerFirstname + '\'' +

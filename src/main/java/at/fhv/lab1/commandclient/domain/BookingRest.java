@@ -3,9 +3,9 @@ package at.fhv.lab1.commandclient.domain;
 public class BookingRest {
 
     private int customerID;
-    private long timestampStart;
-    private long timestampEnd;
     private int roomID;
+    private String bookedStart;
+    private String bookedEnd;
 
     public BookingRest() {
     }
@@ -18,22 +18,6 @@ public class BookingRest {
         this.customerID = customerID;
     }
 
-    public long getTimestampStart() {
-        return timestampStart;
-    }
-
-    public void setTimestampStart(long timestampStart) {
-        this.timestampStart = timestampStart;
-    }
-
-    public long getTimestampEnd() {
-        return timestampEnd;
-    }
-
-    public void setTimestampEnd(long timestampEnd) {
-        this.timestampEnd = timestampEnd;
-    }
-
     public int getRoomID() {
         return roomID;
     }
@@ -42,13 +26,29 @@ public class BookingRest {
         this.roomID = roomID;
     }
 
+    public String getBookedStart() {
+        return bookedStart;
+    }
+
+    public void setBookedStart(String bookedStart) {
+        this.bookedStart = bookedStart;
+    }
+
+    public String getBookedEnd() {
+        return bookedEnd;
+    }
+
+    public void setBookedEnd(String bookedEnd) {
+        this.bookedEnd = bookedEnd;
+    }
+
     @Override
     public String toString() {
         return "BookingRest{" +
                 "customerID=" + customerID +
-                ", timestampStart=" + timestampStart +
-                ", timestampEnd=" + timestampEnd +
                 ", roomID=" + roomID +
+                ", bookedStart='" + bookedStart + '\'' +
+                ", bookedEnd='" + bookedEnd + '\'' +
                 '}';
     }
 }

@@ -4,12 +4,15 @@ import at.fhv.lab1.commandclient.domain.Booking;
 import at.fhv.lab1.commandclient.domain.Customer;
 import at.fhv.lab1.commandclient.domain.Room;
 
+import java.time.LocalDate;
+
 public class RoomBookedEvent {
     private Booking booking;
     private Customer customer;
     private Room room;
-    private long timestampStart;
-    private long timestampEnd;
+    private LocalDate bookedStart;
+    private LocalDate bookedEnd;
+
 
     public Booking getBooking() {
         return booking;
@@ -35,20 +38,20 @@ public class RoomBookedEvent {
         this.room = room;
     }
 
-    public long getTimestampStart() {
-        return timestampStart;
+    public LocalDate getBookedStart() {
+        return bookedStart;
     }
 
-    public void setTimestampStart(long timestampStart) {
-        this.timestampStart = timestampStart;
+    public void setBookedStart(LocalDate bookedStart) {
+        this.bookedStart = bookedStart;
     }
 
-    public long getTimestampEnd() {
-        return timestampEnd;
+    public LocalDate getBookedEnd() {
+        return bookedEnd;
     }
 
-    public void setTimestampEnd(long timestampEnd) {
-        this.timestampEnd = timestampEnd;
+    public void setBookedEnd(LocalDate bookedEnd) {
+        this.bookedEnd = bookedEnd;
     }
 
     @Override
@@ -57,8 +60,8 @@ public class RoomBookedEvent {
                 "booking=" + booking +
                 ", customer=" + customer +
                 ", room=" + room +
-                ", timestampStart=" + timestampStart +
-                ", timestampEnd=" + timestampEnd +
+                ", bookedStart=" + bookedStart +
+                ", bookedEnd=" + bookedEnd +
                 '}';
     }
 }
