@@ -10,6 +10,7 @@ public class Customer {
     private String address;
 
     public Customer(String firstname, String surname, String email, String address) {
+        //TODO: chang id to UUID
         id = idCounter++;
         this.firstname = firstname;
         this.surname = surname;

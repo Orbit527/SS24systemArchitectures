@@ -12,7 +12,9 @@ import at.fhv.lab1.eventbus.events.RoomBookedEvent;
 
 import javax.sound.midi.SysexMessage;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class CommandHandler {
 
@@ -29,17 +31,24 @@ public class CommandHandler {
 
         //TODO: Validate before creating event
 
-        //TODO: check booking by timestamp, not by boolean
+        //TODO: check booking by timestamp
+        //TODO: check booking, if customer and room id exists
         /*
         if(RoomDB.getRoomById(r.getRoom().getId()).isCurrentlyBooked() == true) {
             System.out.println("Room is already booked!");
             return false;
         }
-
          */
 
+        List<Customer> customerWithId1 = CustomerDB.getCustomers()
+                .stream()
+                .filter(c -> c.getId() == 1)
+                .collect(Collectors.toList());
 
-        //TODO: make sure error is thrown, when there is no user with id
+        for (Customer c : customerWithId1 ) {
+            System.out.println("CUSTOMER WITH ID 1: " + c);
+        }
+
 
         RoomBookedEvent roomBookedEvent = new RoomBookedEvent();
 
