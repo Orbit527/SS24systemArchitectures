@@ -12,14 +12,14 @@ public class Customer {
     private String surname;
     private String email;
     private String address;
-    private LocalDate birthdate;
+    private String birthdate;
 
     public Customer(String firstname, String surname, String birthdate, String email, String address) {
         //TODO: chang id to UUID
         id = idCounter++;
         this.firstname = firstname;
         this.surname = surname;
-        this.birthdate = LocalDate.parse(birthdate);
+        this.birthdate = birthdate;
         this.email = email;
         this.address = address;
     }
@@ -60,11 +60,11 @@ public class Customer {
         this.address = address;
     }
 
-    public LocalDate getBirthdate() {
+    public String getBirthdate() {
         return birthdate;
     }
 
-    public void setBirthdate(LocalDate birthdate) {
+    public void setBirthdate(String birthdate) {
         this.birthdate = birthdate;
     }
 
