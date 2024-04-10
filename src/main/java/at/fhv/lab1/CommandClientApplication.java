@@ -65,14 +65,14 @@ public class CommandClientApplication {
             Booking b = new Booking();
             b.setCustomer(c);
             b.setRoom(r);
-            b.setBookedStart(LocalDate.parse("2024-04-10"));
-            b.setBookedEnd(LocalDate.parse("2024-04-15"));
+            b.setStartDate(LocalDate.parse("2024-04-10"));
+            b.setEndDate(LocalDate.parse("2024-04-15"));
 
             roomBookedEvent.setCustomer(c); //TODO: real customer
             roomBookedEvent.setRoom(r); //TODO: real parameters
             roomBookedEvent.setBooking(b); //TODO: add real parameters
-            roomBookedEvent.setBookedStart(b.getBookedStart());
-            roomBookedEvent.setBookedEnd(b.getBookedEnd());
+            roomBookedEvent.setStartDate(b.getStartDate());
+            roomBookedEvent.setEndDate(b.getEndDate());
 
             publisher.publishEvent(roomBookedEvent);
             BookingDB.addBooking(b);

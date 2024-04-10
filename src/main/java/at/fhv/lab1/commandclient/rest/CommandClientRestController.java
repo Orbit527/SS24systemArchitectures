@@ -9,12 +9,12 @@ import at.fhv.lab1.commandclient.database.RoomDB;
 import at.fhv.lab1.commandclient.domain.Booking;
 import at.fhv.lab1.commandclient.domain.BookingRest;
 import at.fhv.lab1.commandclient.domain.Customer;
-import org.springframework.cglib.core.Local;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 @RestController
 public class CommandClientRestController {
@@ -26,37 +26,35 @@ public class CommandClientRestController {
     }
 
     @PostMapping(value = "/createBooking", consumes = "application/json")
-    public boolean addBooking(@RequestBody BookingRest bookingRest) {
+    public String addBooking(@RequestBody BookingRest bookingRest) {
         System.out.println("Booking POST received: " + bookingRest);
 
         //Convert to real Booking Object
         Booking booking = new Booking();
-        //booking.setCustomer(customers.get(bookingRest.getCustomerId())); //TODO: set real Customer from ID
         booking.setCustomer(CustomerDB.getCustomerById(bookingRest.getCustomerID()));
-        System.out.println("CUSTOMER FIRSTNAME:" + CustomerDB.getCustomerById(bookingRest.getCustomerID()));
-        //booking.setRoom(rooms.get(bookingRest.getRoomID()));    //TODO: set real Room from ID
-        booking.setRoom(RoomDB.getRoomById(bookingRest.getRoomID()));    //TODO: set real Room from ID
-        booking.setBookedStart(LocalDate.parse(bookingRest.getBookedStart()));
-        booking.setBookedEnd(LocalDate.parse(bookingRest.getBookedEnd()));
-
+        booking.setRoom(RoomDB.getRoomById(bookingRest.getRoomID()));
+        booking.setStartDate(LocalDate.parse(bookingRest.getStartDate()));
+        booking.setEndDate(LocalDate.parse(bookingRest.getEndDate()));
 
         //Create new Command
         RoomBookedCommand command = new RoomBookedCommand();
         command.setBooking(booking);
         command.setCustomer(booking.getCustomer());
         command.setRoom(booking.getRoom());
-        command.setBookedStart(booking.getBookedStart());
-        command.setBookedEnd(booking.getBookedEnd());
+        command.setStartDate(booking.getStartDate());
+        command.setEndDate(booking.getEndDate());
 
         //Send command to CommandHandler
-        if (commandHandler.handleRoomBookedCommand(command)) {
+        String status = commandHandler.handleRoomBookedCommand(command);
+        if (Objects.equals(status, "0")) {
             BookingDB.addBooking(booking);
         } else {
             System.out.println("Something went wrong trying to create createBooking Event");
-            return false;
-        };
+            System.out.println(status);
+            return status;
+        }
 
-        return true;
+        return "Booking created!";
     }
 
     @PostMapping(value = "/createCustomer", consumes = "application/json")

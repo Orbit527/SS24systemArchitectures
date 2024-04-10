@@ -4,8 +4,8 @@ public class BookingRest {
 
     private int customerID;
     private int roomID;
-    private String bookedStart;
-    private String bookedEnd;
+    private String startDate;
+    private String endDate;
 
     public BookingRest() {
     }
@@ -26,20 +26,20 @@ public class BookingRest {
         this.roomID = roomID;
     }
 
-    public String getBookedStart() {
-        return bookedStart;
+    public String getStartDate() {
+        return startDate;
     }
 
-    public void setBookedStart(String bookedStart) {
-        this.bookedStart = bookedStart;
+    public void setStartDate(String startDate) {
+        this.startDate = startDate;
     }
 
-    public String getBookedEnd() {
-        return bookedEnd;
+    public String getEndDate() {
+        return endDate;
     }
 
-    public void setBookedEnd(String bookedEnd) {
-        this.bookedEnd = bookedEnd;
+    public void setEndDate(String endDate) {
+        this.endDate = endDate;
     }
 
     @Override
@@ -47,8 +47,8 @@ public class BookingRest {
         return "BookingRest{" +
                 "customerID=" + customerID +
                 ", roomID=" + roomID +
-                ", bookedStart='" + bookedStart + '\'' +
-                ", bookedEnd='" + bookedEnd + '\'' +
+                ", startDate='" + startDate + '\'' +
+                ", endDate='" + endDate + '\'' +
                 '}';
     }
 }

@@ -4,8 +4,8 @@ import java.time.LocalDate;
 
 public class BookingsProjected {
 
-    private LocalDate timestampStart;
-    private LocalDate timestampEnd;
+    private LocalDate startDate;
+    private LocalDate endDate;
     private String customerFirstname;
     private String customerSurname;
     private int roomNr;
@@ -16,9 +16,9 @@ public class BookingsProjected {
     public BookingsProjected() {
 
     }
-    public BookingsProjected(LocalDate timestampStart, LocalDate timestampEnd, String customerName, String customerSurname, int roomNr, int capacity, int floor) {
-        this.timestampStart = timestampStart;
-        this.timestampEnd = timestampEnd;
+    public BookingsProjected(LocalDate startDate, LocalDate endDate, String customerName, String customerSurname, int roomNr, int capacity, int floor) {
+        this.startDate = startDate;
+        this.endDate = endDate;
         this.customerFirstname = customerName;
         this.customerSurname = customerSurname;
         this.roomNr = roomNr;
@@ -26,20 +26,20 @@ public class BookingsProjected {
         this.floor = floor;
     }
 
-    public LocalDate getTimestampStart() {
-        return timestampStart;
+    public LocalDate getStartDate() {
+        return startDate;
     }
 
-    public void setTimestampStart(LocalDate timestampStart) {
-        this.timestampStart = timestampStart;
+    public void setStartDate(LocalDate startDate) {
+        this.startDate = startDate;
     }
 
-    public LocalDate getTimestampEnd() {
-        return timestampEnd;
+    public LocalDate getEndDate() {
+        return endDate;
     }
 
-    public void setTimestampEnd(LocalDate timestampEnd) {
-        this.timestampEnd = timestampEnd;
+    public void setEndDate(LocalDate endDate) {
+        this.endDate = endDate;
     }
 
     public String getCustomerFirstname() {
@@ -86,8 +86,8 @@ public class BookingsProjected {
     @Override
     public String toString() {
         return "BookingsProjected{" +
-                "timestampStart=" + timestampStart +
-                ", timestampEnd=" + timestampEnd +
+                "startDate=" + startDate +
+                ", endDate=" + endDate +
                 ", customerFirstname='" + customerFirstname + '\'' +
                 ", customerSurname='" + customerSurname + '\'' +
                 ", roomNr=" + roomNr +

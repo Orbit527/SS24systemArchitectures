@@ -33,6 +33,15 @@ public class CustomerDB {
         return null;
     }
 
+    public static boolean doesCustomerExist(int id) {
+        for (Customer customer : customers) {
+            if (customer.getId() == id) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public static void addCustomer(Customer customer) {
         customers.add(customer);
     }

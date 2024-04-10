@@ -8,8 +8,8 @@ public class Booking {
     private final int id;
     private Customer customer;
     private Room room;
-    private LocalDate bookedStart;
-    private LocalDate bookedEnd;
+    private LocalDate startDate;
+    private LocalDate endDate;
 
 
     public Booking() {
@@ -36,20 +36,20 @@ public class Booking {
         this.room = room;
     }
 
-    public LocalDate getBookedStart() {
-        return bookedStart;
+    public LocalDate getStartDate() {
+        return startDate;
     }
 
-    public void setBookedStart(LocalDate bookedStart) {
-        this.bookedStart = bookedStart;
+    public void setStartDate(LocalDate startDate) {
+        this.startDate = startDate;
     }
 
-    public LocalDate getBookedEnd() {
-        return bookedEnd;
+    public LocalDate getEndDate() {
+        return endDate;
     }
 
-    public void setBookedEnd(LocalDate bookedEnd) {
-        this.bookedEnd = bookedEnd;
+    public void setEndDate(LocalDate endDate) {
+        this.endDate = endDate;
     }
 
     @Override
@@ -58,8 +58,8 @@ public class Booking {
                 "id=" + id +
                 ", customer=" + customer +
                 ", room=" + room +
-                ", bookedStart=" + bookedStart +
-                ", bookedEnd=" + bookedEnd +
+                ", startDate=" + startDate +
+                ", endDate=" + endDate +
                 '}';
     }
 }
