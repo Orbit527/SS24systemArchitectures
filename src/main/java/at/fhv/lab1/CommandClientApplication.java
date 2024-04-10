@@ -56,11 +56,12 @@ public class CommandClientApplication {
             RoomDB.addRoom(new Room(13, 1, 6));
             RoomDB.addRoom(new Room(21, 2, 2));
 
+
             //TODO: add more, when all events are implemented!!
 
             RoomBookedEvent roomBookedEvent = new RoomBookedEvent();
 
-            Customer c = new Customer("Hans", "Joerg", "hans.joerg@email.com", "strasse 123");
+            Customer c = new Customer("Hans", "Joerg", "2001-11-12", "hans.joerg@email.com", "strasse 123");
             Room r = new Room(1, 0, 2 );
             Booking b = new Booking();
             b.setCustomer(c);

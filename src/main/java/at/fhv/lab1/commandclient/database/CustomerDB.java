@@ -14,9 +14,9 @@ public class CustomerDB {
 
         customers = new ArrayList<>();
 
-        customers.add(new Customer("Max", "Mustermann", "max.mustermann@max.com", "Straße 123"));
-        customers.add(new Customer("Eva", "Müller", "eva.mueller@123.com", "Coole Adresse 52"));
-        customers.add(new Customer("Hans", "Franz", "hans.franz@mail.com", "Bach 8234"));
+        customers.add(new Customer("Max", "Mustermann", "2001-11-12", "max.mustermann@max.com", "Straße 123"));
+        customers.add(new Customer("Eva", "Müller", "2001-11-12", "eva.mueller@123.com", "Coole Adresse 52"));
+        customers.add(new Customer("Hans", "Franz", "2001-11-12", "hans.franz@mail.com", "Bach 8234"));
 
     }
 

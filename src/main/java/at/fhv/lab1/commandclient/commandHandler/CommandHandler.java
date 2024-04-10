@@ -14,12 +14,9 @@ import java.util.Objects;
 public class CommandHandler {
 
     private final EventPublisher eventPublisher;
-    //private RoomDB roomDB;
-
 
     public CommandHandler() {
         eventPublisher = new EventPublisher();
-        //roomDB = new RoomDB();
     }
 
     public String handleRoomBookedCommand(RoomBookedCommand r) {
@@ -30,7 +27,6 @@ public class CommandHandler {
 
         //check that endDate is after startDate
         if (r.getEndDate().isBefore(r.getStartDate())) {
-            System.out.println("NOT POSSIBLE");
             return "Enddate is before Startdate";
         }
 
@@ -39,7 +35,6 @@ public class CommandHandler {
             //Booking has to be on the same room
             if (b.getRoom().getId() == r.getRoom().getId()) {
                 if(b.getStartDate().isBefore(r.getEndDate()) && b.getEndDate().isAfter(r.getStartDate())) {
-                    System.out.println("NOT POSSIBLE!");
                     return "There is a booking already in this timeframe";
                 }
             }
@@ -72,14 +67,13 @@ public class CommandHandler {
         return "0";
     }
 
-    public boolean handleCreateCustomerCommand(CreateCustomerCommand c) {
+    public String handleCreateCustomerCommand(CreateCustomerCommand c) {
 
 
         //Customer Email exists validation
         for(Customer cust : CustomerDB.getCustomers()) {
             if (Objects.equals(cust.getEmail(), c.getEmail())) {
-                System.out.println("Customer with that email already exists!");
-                return false;
+                return "Customer with that Email already exists!";
             }
         }
 
@@ -87,7 +81,7 @@ public class CommandHandler {
 
         //TODO: Create Event and send to EventBus
 
-        return true;
+        return "0";
 
     }
 

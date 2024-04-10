@@ -58,7 +58,7 @@ public class CommandClientRestController {
     }
 
     @PostMapping(value = "/createCustomer", consumes = "application/json")
-    public boolean createCustomer(@RequestBody Customer customer) {
+    public String createCustomer(@RequestBody Customer customer) {
         System.out.println("Create Customer POST received: " +  customer);
 
         //Create new Command
@@ -69,14 +69,15 @@ public class CommandClientRestController {
         command.setAddress(customer.getAddress());
 
         //Send command to CommandHandler
-        if (commandHandler.handleCreateCustomerCommand(command)) {
+        String status = commandHandler.handleCreateCustomerCommand(command);
+        if (Objects.equals(status, "0")) {
             CustomerDB.addCustomer(customer);
             System.out.println(CustomerDB.getCustomers());
         } else {
             System.out.println("Something went wrong trying to create createCustomer Event");
-            return false;
+            return status;
         };
 
-        return true;
+        return "Customer added!";
     }
 }
