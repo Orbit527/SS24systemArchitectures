@@ -2,6 +2,7 @@ package at.fhv.lab1.commandclient.commandHandler;
 
 import at.fhv.lab1.commandclient.EventPublisher;
 import at.fhv.lab1.commandclient.commands.CreateCustomerCommand;
+import at.fhv.lab1.commandclient.commands.CreateRoomCommand;
 import at.fhv.lab1.commandclient.commands.RoomBookedCommand;
 import at.fhv.lab1.commandclient.database.BookingDB;
 import at.fhv.lab1.commandclient.database.CustomerDB;
@@ -76,6 +77,16 @@ public class CommandHandler {
                 return "Customer with that Email already exists!";
             }
         }
+
+        //TODO: further Validation
+
+        //TODO: Create Event and send to EventBus
+
+        return "0";
+
+    }
+
+    public String handleCreateRoomCommand(CreateRoomCommand c) {
 
         //TODO: further Validation
 

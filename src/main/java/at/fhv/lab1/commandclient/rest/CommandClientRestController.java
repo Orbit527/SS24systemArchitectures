@@ -2,6 +2,7 @@ package at.fhv.lab1.commandclient.rest;
 
 import at.fhv.lab1.commandclient.commandHandler.CommandHandler;
 import at.fhv.lab1.commandclient.commands.CreateCustomerCommand;
+import at.fhv.lab1.commandclient.commands.CreateRoomCommand;
 import at.fhv.lab1.commandclient.commands.RoomBookedCommand;
 import at.fhv.lab1.commandclient.database.BookingDB;
 import at.fhv.lab1.commandclient.database.CustomerDB;
@@ -9,6 +10,7 @@ import at.fhv.lab1.commandclient.database.RoomDB;
 import at.fhv.lab1.commandclient.domain.Booking;
 import at.fhv.lab1.commandclient.domain.BookingRest;
 import at.fhv.lab1.commandclient.domain.Customer;
+import at.fhv.lab1.commandclient.domain.Room;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -79,5 +81,28 @@ public class CommandClientRestController {
         };
 
         return "Customer added!";
+    }
+
+    @PostMapping(value = "/addRoom", consumes = "application/json")
+    public String addRoom(@RequestBody Room room) {
+        System.out.println("Create Room POST received: " +  room);
+
+        //Create new Command
+        CreateRoomCommand command = new CreateRoomCommand();
+        command.setRoomNr(room.getRoomNr());
+        command.setCapacity(room.getCapacity());
+        command.setFloor(room.getFloor());
+
+        //Send command to CommandHandler
+        String status = commandHandler.handleCreateRoomCommand(command);
+        if (Objects.equals(status, "0")) {
+            RoomDB.addRoom(room);
+            System.out.println(RoomDB.getRooms());
+        } else {
+            System.out.println("Something went wrong trying to create createRoom Event");
+            return status;
+        };
+
+        return "Room added!";
     }
 }
