@@ -1,5 +1,6 @@
 package at.fhv.lab1.queryclient.rest;
 
+import at.fhv.lab1.eventbus.events.CreateCustomerEvent;
 import at.fhv.lab1.eventbus.events.RoomBookedEvent;
 import at.fhv.lab1.queryclient.database.BookingsProjectedDB;
 import at.fhv.lab1.queryclient.domain.BookingsProjected;
@@ -16,8 +17,8 @@ public class QueryRestController {
         bookingsProjectedDB = new BookingsProjectedDB();
     }
 
-    @PostMapping(value = "/event", consumes = "application/json")
-    public boolean addEvent(@RequestBody RoomBookedEvent event) {
+    @PostMapping(value = "/eventRoomBookedAdded", consumes = "application/json")
+    public boolean addRoomBookedEvent(@RequestBody RoomBookedEvent event) {
         // TODO: process event through projection
 
         System.out.println("Event received: " + event);
@@ -44,4 +45,16 @@ public class QueryRestController {
 
         return true;
     }
+
+    @PostMapping(value = "/eventCustomerAdded", consumes = "application/json")
+    public boolean addCustomerEvent(@RequestBody CreateCustomerEvent event) {
+        // TODO: process event through projection
+
+        //TODO: add to DB
+
+        System.out.println("Event received: " + event);
+
+        return true;
+    }
+
 }

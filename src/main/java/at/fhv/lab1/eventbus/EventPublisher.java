@@ -1,5 +1,6 @@
 package at.fhv.lab1.eventbus;
 
+import at.fhv.lab1.eventbus.events.CreateCustomerEvent;
 import at.fhv.lab1.eventbus.events.Event;
 import at.fhv.lab1.eventbus.events.RoomBookedEvent;
 import org.springframework.http.MediaType;
@@ -31,7 +32,7 @@ public class EventPublisher {
     public Boolean publishEvent(RoomBookedEvent event) {
         return localApiClient
                 .post()
-                .uri("/event")
+                .uri("/eventRoomBookedAdded")
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON)
                 .body(Mono.just(event),Event.class)
@@ -39,4 +40,17 @@ public class EventPublisher {
                 .bodyToMono(Boolean.class)
                 .block();
     }
+
+    public Boolean publishEvent(CreateCustomerEvent event) {
+        return localApiClient
+                .post()
+                .uri("/eventCustomerAdded")
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON)
+                .body(Mono.just(event),Event.class)
+                .retrieve()
+                .bodyToMono(Boolean.class)
+                .block();
+    }
+
 }

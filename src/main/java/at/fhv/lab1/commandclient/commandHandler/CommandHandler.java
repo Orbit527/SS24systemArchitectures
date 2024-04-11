@@ -8,6 +8,7 @@ import at.fhv.lab1.commandclient.database.BookingDB;
 import at.fhv.lab1.commandclient.database.CustomerDB;
 import at.fhv.lab1.commandclient.domain.Booking;
 import at.fhv.lab1.commandclient.domain.Customer;
+import at.fhv.lab1.eventbus.events.CreateCustomerEvent;
 import at.fhv.lab1.eventbus.events.RoomBookedEvent;
 
 import java.util.Objects;
@@ -96,6 +97,15 @@ public class CommandHandler {
         //TODO: further Validation
 
         //TODO: Create Event and send to EventBus
+        CreateCustomerEvent createCustomerEvent = new CreateCustomerEvent();
+
+        createCustomerEvent.setFirstname(c.getFirstname());
+        createCustomerEvent.setSurname(c.getSurname());
+        createCustomerEvent.setBirthdate(c.getBirthdate());
+        createCustomerEvent.setAddress(c.getAddress());
+        createCustomerEvent.setEmail(c.getEmail());
+
+        System.out.println("CreateCustomerEvent: " + eventPublisher.publishEvent(createCustomerEvent));
 
         return "0";
 
