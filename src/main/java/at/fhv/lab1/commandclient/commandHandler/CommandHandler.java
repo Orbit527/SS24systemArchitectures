@@ -23,12 +23,23 @@ public class CommandHandler {
     public String handleRoomBookedCommand(RoomBookedCommand r) {
 
         //TODO: Validate before creating event
+        if (r.getBooking() == null || r.getEndDate() == null || r.getStartDate() == null) {
+            return "Fields cannot be empty!";
+        }
 
-        //TODO: check booking, if customer and room id exists
+        //check if Customer with that Id exists
+        if (r.getCustomer() == null) {
+            return "Customer with that ID does not exist!";
+        }
+
+        //check if Room with that Id exists
+        if (r.getRoom() == null) {
+            return "Room with that ID does not exist!";
+        }
 
         //check that endDate is after startDate
         if (r.getEndDate().isBefore(r.getStartDate())) {
-            return "Enddate is before Startdate";
+            return "Enddate is before Startdate!";
         }
 
         //check for overlapping date
@@ -37,7 +48,7 @@ public class CommandHandler {
             //Booking has to be on the same room
             if (b.getRoom().getId() == r.getRoom().getId()) {
                 if(b.getStartDate().isBefore(r.getEndDate()) && b.getEndDate().isAfter(r.getStartDate())) {
-                    return "There is a booking already in this timeframe";
+                    return "There is a booking already in this timeframe!";
                 }
             }
         }
@@ -52,7 +63,7 @@ public class CommandHandler {
         for (Customer c : customerWithId1 ) {
             System.out.println("CUSTOMER WITH ID 1: " + c);
         }
-         */
+        */
 
 
         RoomBookedEvent roomBookedEvent = new RoomBookedEvent();
@@ -65,7 +76,6 @@ public class CommandHandler {
 
         System.out.println("BookRoomEvent: " + eventPublisher.publishEvent(roomBookedEvent));
 
-        //TODO: sent true or false, if something fails or not
         return "0";
     }
 
