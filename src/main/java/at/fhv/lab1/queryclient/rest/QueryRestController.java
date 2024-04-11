@@ -1,5 +1,6 @@
 package at.fhv.lab1.queryclient.rest;
 
+import at.fhv.lab1.eventbus.events.CancelBookingEvent;
 import at.fhv.lab1.eventbus.events.CreateCustomerEvent;
 import at.fhv.lab1.eventbus.events.CreateRoomEvent;
 import at.fhv.lab1.eventbus.events.RoomBookedEvent;
@@ -46,6 +47,18 @@ public class QueryRestController {
 
         return true;
     }
+
+    @PostMapping(value = "/eventCancelBooking", consumes = "application/json")
+    public boolean cancelBookingEvent(@RequestBody CancelBookingEvent event) {
+        // TODO: process event through projection
+
+        //TODO: remove from projected DB
+
+        System.out.println("Event received: " + event);
+
+        return true;
+    }
+
 
     @PostMapping(value = "/eventCustomerAdded", consumes = "application/json")
     public boolean addCustomerEvent(@RequestBody CreateCustomerEvent event) {

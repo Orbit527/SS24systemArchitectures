@@ -1,6 +1,7 @@
 package at.fhv.lab1.commandclient.commandHandler;
 
 import at.fhv.lab1.commandclient.EventPublisher;
+import at.fhv.lab1.commandclient.commands.CancelBookingCommand;
 import at.fhv.lab1.commandclient.commands.CreateCustomerCommand;
 import at.fhv.lab1.commandclient.commands.CreateRoomCommand;
 import at.fhv.lab1.commandclient.commands.RoomBookedCommand;
@@ -8,6 +9,7 @@ import at.fhv.lab1.commandclient.database.BookingDB;
 import at.fhv.lab1.commandclient.database.CustomerDB;
 import at.fhv.lab1.commandclient.domain.Booking;
 import at.fhv.lab1.commandclient.domain.Customer;
+import at.fhv.lab1.eventbus.events.CancelBookingEvent;
 import at.fhv.lab1.eventbus.events.CreateCustomerEvent;
 import at.fhv.lab1.eventbus.events.CreateRoomEvent;
 import at.fhv.lab1.eventbus.events.RoomBookedEvent;
@@ -77,6 +79,24 @@ public class CommandHandler {
         roomBookedEvent.setEndDate(r.getEndDate());
 
         System.out.println("BookRoomEvent: " + eventPublisher.publishEvent(roomBookedEvent));
+
+        return "0";
+    }
+
+    public String handleCancelBookingCommand(CancelBookingCommand c) {
+
+        //TODO: check that booking with that Id exists
+
+
+
+        CancelBookingEvent cancelBookingEvent = new CancelBookingEvent();
+
+        cancelBookingEvent.setId(c.getId());
+
+
+        System.out.println("CANCEL BOOKING");
+
+        System.out.println("BookRoomEvent: " + eventPublisher.publishEvent(cancelBookingEvent));
 
         return "0";
     }
