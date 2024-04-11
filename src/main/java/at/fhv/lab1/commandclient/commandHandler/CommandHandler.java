@@ -9,6 +9,7 @@ import at.fhv.lab1.commandclient.database.CustomerDB;
 import at.fhv.lab1.commandclient.domain.Booking;
 import at.fhv.lab1.commandclient.domain.Customer;
 import at.fhv.lab1.eventbus.events.CreateCustomerEvent;
+import at.fhv.lab1.eventbus.events.CreateRoomEvent;
 import at.fhv.lab1.eventbus.events.RoomBookedEvent;
 
 import java.util.Objects;
@@ -115,7 +116,17 @@ public class CommandHandler {
 
         //TODO: further Validation
 
+        //TODO: check that room Number is unique
+
         //TODO: Create Event and send to EventBus
+        CreateRoomEvent createRoomEvent = new CreateRoomEvent();
+
+        createRoomEvent.setRoomNr(c.getRoomNr());
+        createRoomEvent.setFloor(c.getFloor());
+        createRoomEvent.setCapacity(c.getCapacity());
+
+        System.out.println("CreateCustomerEvent: " + eventPublisher.publishEvent(createRoomEvent));
+
 
         return "0";
 

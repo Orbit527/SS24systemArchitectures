@@ -85,7 +85,7 @@ public class CommandClientRestController {
         return "Customer added!";
     }
 
-    @PostMapping(value = "/addRoom", consumes = "application/json")
+    @PostMapping(value = "/createRoom", consumes = "application/json")
     public String addRoom(@RequestBody Room room) {
         System.out.println("Create Room POST received: " +  room);
 
