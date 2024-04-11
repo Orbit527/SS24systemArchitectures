@@ -1,9 +1,12 @@
 package at.fhv.lab1.commandclient.commands;
 
+import java.time.LocalDate;
+
 public class CreateCustomerCommand {
 
     private String firstname;
     private String surname;
+    private LocalDate birthdate;
     private String email;
     private String address;
 
@@ -27,6 +30,14 @@ public class CreateCustomerCommand {
         this.surname = surname;
     }
 
+    public LocalDate getBirthdate() {
+        return birthdate;
+    }
+
+    public void setBirthdate(LocalDate birthdate) {
+        this.birthdate = birthdate;
+    }
+
     public String getEmail() {
         return email;
     }
@@ -48,6 +59,7 @@ public class CreateCustomerCommand {
         return "CreateCustomerCommand{" +
                 "firstname='" + firstname + '\'' +
                 ", surname='" + surname + '\'' +
+                ", birthdate='" + birthdate + '\'' +
                 ", email='" + email + '\'' +
                 ", address='" + address + '\'' +
                 '}';

@@ -12,9 +12,9 @@ public class Customer {
     private String surname;
     private String email;
     private String address;
-    private String birthdate;
+    private LocalDate birthdate;
 
-    public Customer(String firstname, String surname, String birthdate, String email, String address) {
+    public Customer(String firstname, String surname, LocalDate birthdate, String email, String address) {
         //TODO: chang id to UUID
         id = idCounter++;
         this.firstname = firstname;
@@ -60,11 +60,11 @@ public class Customer {
         this.address = address;
     }
 
-    public String getBirthdate() {
+    public LocalDate getBirthdate() {
         return birthdate;
     }
 
-    public void setBirthdate(String birthdate) {
+    public void setBirthdate(LocalDate birthdate) {
         this.birthdate = birthdate;
     }
 

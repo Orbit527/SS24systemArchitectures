@@ -56,13 +56,18 @@ public class CommandClientApplication {
             RoomDB.addRoom(new Room(13, 1, 6));
             RoomDB.addRoom(new Room(21, 2, 2));
 
+            CustomerDB.addCustomer(new Customer("Max", "Mustermann", LocalDate.parse("2001-11-12"), "max.mustermann@max.com", "Straße 123"));
+            CustomerDB.addCustomer(new Customer("Eva", "Müller", LocalDate.parse("2001-11-12"), "eva.mueller@123.com", "Coole Adresse 52"));
+            CustomerDB.addCustomer(new Customer("Hans", "Franz", LocalDate.parse("2001-11-12"), "hans.franz@mail.com", "Bach 8234"));
+
+
 
             //TODO: add more, when all events are implemented!!
 
-            /*
+
             RoomBookedEvent roomBookedEvent = new RoomBookedEvent();
 
-            Customer c = new Customer("Hans", "Joerg", "2001-11-12", "hans.joerg@email.com", "strasse 123");
+            Customer c = new Customer("Hans", "Joerg", LocalDate.parse("2001-11-12"), "hans.joerg@email.com", "strasse 123");
             Room r = new Room(1, 0, 2 );
             Booking b = new Booking();
             b.setCustomer(c);
@@ -78,7 +83,7 @@ public class CommandClientApplication {
 
             publisher.publishEvent(roomBookedEvent);
             BookingDB.addBooking(b);
-*/
+
 
 
         };

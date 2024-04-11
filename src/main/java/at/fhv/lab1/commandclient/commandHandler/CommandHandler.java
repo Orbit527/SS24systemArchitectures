@@ -22,7 +22,7 @@ public class CommandHandler {
 
     public String handleRoomBookedCommand(RoomBookedCommand r) {
 
-        //TODO: Validate before creating event
+        //check for empty fields
         if (r.getBooking() == null || r.getEndDate() == null || r.getStartDate() == null) {
             return "Fields cannot be empty!";
         }
@@ -81,9 +81,13 @@ public class CommandHandler {
 
     public String handleCreateCustomerCommand(CreateCustomerCommand c) {
 
+        //check for empty fields
+        if (c.getFirstname() == "" || c.getSurname() == "" || c.getEmail() == "" || c.getAddress() == "") {
+            return "Field cannot be empty!";
+        }
 
         //Customer Email exists validation
-        for(Customer cust : CustomerDB.getCustomers()) {
+        for (Customer cust : CustomerDB.getCustomers()) {
             if (Objects.equals(cust.getEmail(), c.getEmail())) {
                 return "Customer with that Email already exists!";
             }

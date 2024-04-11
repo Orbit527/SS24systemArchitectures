@@ -51,7 +51,7 @@ public class CommandClientRestController {
         if (Objects.equals(status, "0")) {
             BookingDB.addBooking(booking);
         } else {
-            System.out.println("Something went wrong trying to create createBooking Event");
+            System.out.println("Something went wrong trying to create createBooking Event!");
             System.out.println(status);
             return status;
         }
@@ -67,6 +67,7 @@ public class CommandClientRestController {
         CreateCustomerCommand command = new CreateCustomerCommand();
         command.setFirstname(customer.getFirstname());
         command.setSurname(customer.getSurname());
+        command.setBirthdate(LocalDate.parse("2001-12-12")); //TODO: Real Date
         command.setEmail(customer.getEmail());
         command.setAddress(customer.getAddress());
 
@@ -76,7 +77,8 @@ public class CommandClientRestController {
             CustomerDB.addCustomer(customer);
             System.out.println(CustomerDB.getCustomers());
         } else {
-            System.out.println("Something went wrong trying to create createCustomer Event");
+            System.out.println("Something went wrong trying to create createCustomer Event!");
+            System.out.println(status);
             return status;
         };
 
@@ -99,7 +101,8 @@ public class CommandClientRestController {
             RoomDB.addRoom(room);
             System.out.println(RoomDB.getRooms());
         } else {
-            System.out.println("Something went wrong trying to create createRoom Event");
+            System.out.println("Something went wrong trying to create createRoom Event!");
+            System.out.println(status);
             return status;
         };
 
