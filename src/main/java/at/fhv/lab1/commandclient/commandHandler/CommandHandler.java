@@ -87,14 +87,14 @@ public class CommandHandler {
 
         //TODO: check that booking with that Id exists
 
-
+        if (BookingDB.getBookingById(c.getId()) == null) {
+            return "Booking with that id does not exist!";
+        }
 
         CancelBookingEvent cancelBookingEvent = new CancelBookingEvent();
 
         cancelBookingEvent.setId(c.getId());
 
-
-        System.out.println("CANCEL BOOKING");
 
         System.out.println("BookRoomEvent: " + eventPublisher.publishEvent(cancelBookingEvent));
 
