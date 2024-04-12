@@ -14,6 +14,8 @@ import at.fhv.lab1.eventbus.events.CreateCustomerEvent;
 import at.fhv.lab1.eventbus.events.CreateRoomEvent;
 import at.fhv.lab1.eventbus.events.RoomBookedEvent;
 
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.Objects;
 
 public class CommandHandler {
@@ -104,7 +106,7 @@ public class CommandHandler {
     public String handleCreateCustomerCommand(CreateCustomerCommand c) {
 
         //check for empty fields
-        if (c.getFirstname() == "" || c.getSurname() == "" || c.getEmail() == "" || c.getAddress() == "") {
+        if (Objects.equals(c.getFirstname(), "") || Objects.equals(c.getSurname(), "") || Objects.equals(c.getEmail(), "") || Objects.equals(c.getAddress(), "")) {
             return "Field cannot be empty!";
         }
 
@@ -115,9 +117,12 @@ public class CommandHandler {
             }
         }
 
-        //TODO: further Validation
+        //check that customer is 18 years old
+        Period ageDifference = Period.between(c.getBirthdate(), LocalDate.now());
+        if (ageDifference.getYears() < 18) {
+            return "Customer is not at least 18 years old!";
+        }
 
-        //TODO: Create Event and send to EventBus
         CreateCustomerEvent createCustomerEvent = new CreateCustomerEvent();
 
         createCustomerEvent.setFirstname(c.getFirstname());
