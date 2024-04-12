@@ -60,12 +60,12 @@ public class FreeRoomsProjected {
 
     @Override
     public String toString() {
-        return "FreeRoomsProjected{" +
-                "roomId=" + roomId +
-                ", roomNr=" + roomNr +
-                ", floor=" + floor +
-                ", capacity=" + capacity +
-                ", timeframes=" + timeframes +
-                '}';
+        return "{" +
+                "\"roomId\":" + roomId +
+                ", \"roomNr\":\"" + roomNr + "\"" +
+                ", \"floor\":" + floor +
+                ", \"capacity\":" + capacity +
+                ", \"timeframes\":" + timeframes +
+                "}";
     }
 }
