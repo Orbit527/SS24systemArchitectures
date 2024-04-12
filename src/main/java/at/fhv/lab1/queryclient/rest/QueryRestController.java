@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class QueryRestController {
 
-    private BookingsProjectedDB bookingsProjectedDB;
+    private static BookingsProjectedDB bookingsProjectedDB;
 
     public QueryRestController() {
         bookingsProjectedDB = new BookingsProjectedDB();
@@ -28,6 +28,8 @@ public class QueryRestController {
 
 
         BookingsProjected bookingsProjected = new BookingsProjected();
+
+        bookingsProjected.setBookingId(event.getBooking().getId());
         bookingsProjected.setCapacity(event.getRoom().getCapacity());
         bookingsProjected.setCustomerFirstname(event.getCustomer().getFirstname());
         bookingsProjected.setCustomerSurname(event.getCustomer().getSurname());

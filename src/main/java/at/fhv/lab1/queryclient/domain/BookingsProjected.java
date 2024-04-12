@@ -4,6 +4,7 @@ import java.time.LocalDate;
 
 public class BookingsProjected {
 
+    private int bookingId;
     private LocalDate startDate;
     private LocalDate endDate;
     private String customerFirstname;
@@ -16,7 +17,8 @@ public class BookingsProjected {
     public BookingsProjected() {
 
     }
-    public BookingsProjected(LocalDate startDate, LocalDate endDate, String customerName, String customerSurname, int roomNr, int capacity, int floor) {
+    public BookingsProjected(int bookingId, LocalDate startDate, LocalDate endDate, String customerName, String customerSurname, int roomNr, int capacity, int floor) {
+        this.bookingId = bookingId;
         this.startDate = startDate;
         this.endDate = endDate;
         this.customerFirstname = customerName;
@@ -24,6 +26,14 @@ public class BookingsProjected {
         this.roomNr = roomNr;
         this.capacity = capacity;
         this.floor = floor;
+    }
+
+    public int getBookingId() {
+        return bookingId;
+    }
+
+    public void setBookingId(int bookingId) {
+        this.bookingId = bookingId;
     }
 
     public LocalDate getStartDate() {
@@ -85,14 +95,15 @@ public class BookingsProjected {
 
     @Override
     public String toString() {
-        return "BookingsProjected{" +
-                "startDate=" + startDate +
-                ", endDate=" + endDate +
-                ", customerFirstname='" + customerFirstname + '\'' +
-                ", customerSurname='" + customerSurname + '\'' +
-                ", roomNr=" + roomNr +
-                ", capacity=" + capacity +
-                ", floor=" + floor +
-                '}';
+        return "{" +
+                "\"bookingId\":" + bookingId +
+                ", \"startDate\":\"" + startDate + "\"" +
+                ", \"endDate\":\"" + endDate + "\"" +
+                ", \"customerFirstname\":\"" + customerFirstname + "\"" +
+                ", \"customerSurname\":\"" + customerSurname + "\"" +
+                ", \"roomNr\":" + roomNr +
+                ", \"capacity\":" + capacity +
+                ", \"floor\":" + floor +
+                "}";
     }
 }

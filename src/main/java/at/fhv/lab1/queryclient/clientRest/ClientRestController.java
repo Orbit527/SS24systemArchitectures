@@ -1,30 +1,30 @@
 package at.fhv.lab1.queryclient.clientRest;
 
-import at.fhv.lab1.commandclient.domain.BookingRest;
 import at.fhv.lab1.queryclient.queries.GetBookingsQuery;
 import at.fhv.lab1.queryclient.queries.QueryHandler;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
-public class clientRest {
+public class ClientRestController {
 
     private QueryHandler queryHandler;
 
-    public clientRest() {
+    public ClientRestController() {
         queryHandler = new QueryHandler();
     }
 
-    @GetMapping(value = "/getBookings")
-    public String getBookings() {
+    @PostMapping(value = "/getBookings")
+    public String getBookings(@RequestBody GetBookingsRest getBookingsRest) {
 
         GetBookingsQuery getBookingsQuery = new GetBookingsQuery();
 
-        return queryHandler.handleGetBookingsQuery(getBookingsQuery);
-    }
+        getBookingsQuery.setStartDate(getBookingsRest.getStartDate());
+        getBookingsQuery.setEndDate(getBookingsRest.getEndDate());
 
-    
+        return queryHandler.handleGetBookingsQuery(getBookingsQuery);
+
+    }
 }

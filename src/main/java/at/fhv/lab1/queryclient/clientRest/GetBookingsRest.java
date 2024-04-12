@@ -1,19 +1,11 @@
-package at.fhv.lab1.queryclient.queries;
+package at.fhv.lab1.queryclient.clientRest;
 
 import java.time.LocalDate;
 
-public class GetBookingsQuery {
+public class GetBookingsRest {
 
     private LocalDate startDate;
     private LocalDate endDate;
-
-    public GetBookingsQuery() {
-
-    }
-    public GetBookingsQuery(LocalDate timestampStart, LocalDate timestampEnd) {
-        this.startDate = timestampStart;
-        this.endDate = timestampEnd;
-    }
 
     public LocalDate getStartDate() {
         return startDate;
@@ -31,10 +23,9 @@ public class GetBookingsQuery {
         this.endDate = endDate;
     }
 
-
     @Override
     public String toString() {
-        return "GetBookingsQuery{" +
+        return "GetBookingsRest{" +
                 "startDate=" + startDate +
                 ", endDate=" + endDate +
                 '}';

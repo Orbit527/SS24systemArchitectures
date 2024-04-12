@@ -12,15 +12,15 @@ public class BookingsProjectedDB {
         bookings = new ArrayList<>();
     }
 
-    public ArrayList<BookingsProjected> getBookings() {
+    public static ArrayList<BookingsProjected> getBookings() {
         return bookings;
     }
 
-    public void addBooking(BookingsProjected booking) {
+    public static void addBooking(BookingsProjected booking) {
         bookings.add(booking);
     }
 
-    public void removeBooking(BookingsProjected booking) {
+    public static void removeBooking(BookingsProjected booking) {
         bookings.remove(booking);
     }
 
