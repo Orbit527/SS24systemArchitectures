@@ -42,24 +42,8 @@ public class CommandClientApplication {
     @Bean
     public CommandLineRunner run() throws Exception {
         return args -> {
-            /*
-            Event event = new Event();
-            event.setContent("This is the content!");
-            event.setCustomer("Customer1");
-            event.setTimestamp(System.currentTimeMillis());
-            System.out.println("Result: " + publisher.publishEvent(event));
-            */
 
             //Mock data
-            /*
-            RoomDB.addRoom(new Room(1, 0, 2));
-            RoomDB.addRoom(new Room(2, 0, 4));
-            RoomDB.addRoom(new Room(3, 0, 3));
-            RoomDB.addRoom(new Room(11, 1, 1));
-            RoomDB.addRoom(new Room(12, 1, 1));
-            RoomDB.addRoom(new Room(13, 1, 6));
-            RoomDB.addRoom(new Room(21, 2, 2));
-             */
 
             //Rooms
             CreateRoomEvent cre1 = new CreateRoomEvent();
@@ -70,11 +54,39 @@ public class CommandClientApplication {
             RoomDB.addRoom(r1);
             publisher.publishEvent(cre1);
 
-/*
-            CustomerDB.addCustomer(new Customer("Max", "Mustermann", LocalDate.parse("2001-11-12"), "max.mustermann@max.com", "Straße 123"));
-            CustomerDB.addCustomer(new Customer("Eva", "Müller", LocalDate.parse("2001-11-12"), "eva.mueller@123.com", "Coole Adresse 52"));
-            CustomerDB.addCustomer(new Customer("Hans", "Franz", LocalDate.parse("2001-11-12"), "hans.franz@mail.com", "Bach 8234"));
-*/
+            CreateRoomEvent cre2 = new CreateRoomEvent();
+            Room r2 = new Room(2, 0, 2);
+            cre2.setRoomNr(r2.getRoomNr());
+            cre2.setFloor(r2.getFloor());
+            cre2.setCapacity(r2.getCapacity());
+            RoomDB.addRoom(r2);
+            publisher.publishEvent(cre2);
+
+            CreateRoomEvent cre3 = new CreateRoomEvent();
+            Room r3 = new Room(11, 1, 4);
+            cre3.setRoomNr(r3.getRoomNr());
+            cre3.setFloor(r3.getFloor());
+            cre3.setCapacity(r3.getCapacity());
+            RoomDB.addRoom(r3);
+            publisher.publishEvent(cre3);
+
+            CreateRoomEvent cre4 = new CreateRoomEvent();
+            Room r4 = new Room(12, 1, 2);
+            cre4.setRoomNr(r4.getRoomNr());
+            cre4.setFloor(r4.getFloor());
+            cre4.setCapacity(r4.getCapacity());
+            RoomDB.addRoom(r4);
+            publisher.publishEvent(cre4);
+
+            CreateRoomEvent cre5 = new CreateRoomEvent();
+            Room r5 = new Room(21, 2, 2);
+            cre5.setRoomNr(r5.getRoomNr());
+            cre5.setFloor(r5.getFloor());
+            cre5.setCapacity(r5.getCapacity());
+            RoomDB.addRoom(r5);
+            publisher.publishEvent(cre5);
+
+
             //Customers
             CreateCustomerEvent cce1 = new CreateCustomerEvent();
             Customer c1 = new Customer("Max", "Mustermann", LocalDate.parse("2001-11-12"), "max.mustermann@max.com", "Straße 123");
@@ -86,25 +98,62 @@ public class CommandClientApplication {
             CustomerDB.addCustomer(c1);
             publisher.publishEvent(cce1);
 
-            //TODO: add more, when all events are implemented!!
+            CreateCustomerEvent cce2 = new CreateCustomerEvent();
+            Customer c2 = new Customer("Eva", "Müller", LocalDate.parse("1988-01-06"), "eva.mueller@mail.com", "Gasse 456");
+            cce2.setFirstname(c2.getFirstname());
+            cce2.setSurname(c2.getSurname());
+            cce2.setBirthdate(c2.getBirthdate());
+            cce2.setAddress(c2.getAddress());
+            cce2.setEmail(c2.getEmail());
+            CustomerDB.addCustomer(c2);
+            publisher.publishEvent(cce2);
+
+            CreateCustomerEvent cce3 = new CreateCustomerEvent();
+            Customer c3 = new Customer("Hans", "Franz", LocalDate.parse("1924-04-17"), "hans.franz@mail.com", "Bach 2");
+            cce3.setFirstname(c3.getFirstname());
+            cce3.setSurname(c3.getSurname());
+            cce3.setBirthdate(c3.getBirthdate());
+            cce3.setAddress(c3.getAddress());
+            cce3.setEmail(c3.getEmail());
+            CustomerDB.addCustomer(c3);
+            publisher.publishEvent(cce3);
+
 
             //RoomBookedEvents
-            RoomBookedEvent roomBookedEvent = new RoomBookedEvent();
+            RoomBookedEvent rbe1 = new RoomBookedEvent();
 
-            Booking b = new Booking();
-            b.setCustomer(c1);
-            b.setRoom(r1);
-            b.setStartDate(LocalDate.parse("2024-04-10"));
-            b.setEndDate(LocalDate.parse("2024-04-15"));
+            Booking b1 = new Booking();
+            b1.setCustomer(c1);
+            b1.setRoom(r2);
+            b1.setStartDate(LocalDate.parse("2024-04-10"));
+            b1.setEndDate(LocalDate.parse("2024-04-15"));
 
-            roomBookedEvent.setCustomer(c1); //TODO: real customer
-            roomBookedEvent.setRoom(r1); //TODO: real parameters
-            roomBookedEvent.setBooking(b); //TODO: add real parameters
-            roomBookedEvent.setStartDate(b.getStartDate());
-            roomBookedEvent.setEndDate(b.getEndDate());
+            rbe1.setCustomer(c1);
+            rbe1.setRoom(r2);
+            rbe1.setBooking(b1);
+            rbe1.setStartDate(b1.getStartDate());
+            rbe1.setEndDate(b1.getEndDate());
 
-            BookingDB.addBooking(b);
-            publisher.publishEvent(roomBookedEvent);
+            BookingDB.addBooking(b1);
+            publisher.publishEvent(rbe1);
+
+
+            RoomBookedEvent rbe2 = new RoomBookedEvent();
+
+            Booking b2 = new Booking();
+            b2.setCustomer(c2);
+            b2.setRoom(r4);
+            b2.setStartDate(LocalDate.parse("2024-04-08"));
+            b2.setEndDate(LocalDate.parse("2024-04-17"));
+
+            rbe2.setCustomer(c2);
+            rbe2.setRoom(r4);
+            rbe2.setBooking(b2);
+            rbe2.setStartDate(b2.getStartDate());
+            rbe2.setEndDate(b2.getEndDate());
+
+            BookingDB.addBooking(b2);
+            publisher.publishEvent(rbe2);
 
         };
     }
