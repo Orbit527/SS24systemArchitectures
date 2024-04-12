@@ -116,6 +116,7 @@ public class CommandClientRestController {
 
         //Create new Command
         CreateRoomCommand command = new CreateRoomCommand();
+        command.setRoomId(room.getId());
         command.setRoomNr(room.getRoomNr());
         command.setCapacity(room.getCapacity());
         command.setFloor(room.getFloor());

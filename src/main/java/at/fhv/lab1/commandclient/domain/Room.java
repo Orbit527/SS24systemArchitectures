@@ -8,6 +8,10 @@ public class Room {
     private int floor;
     private int capacity;
 
+    public Room() {
+        this.id = idCounter++;
+    }
+
     public Room(int roomNr, int floor, int capacity) {
         this.id = idCounter++;
         this.roomNr = roomNr;

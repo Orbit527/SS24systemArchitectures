@@ -48,6 +48,7 @@ public class CommandClientApplication {
             //Rooms
             CreateRoomEvent cre1 = new CreateRoomEvent();
             Room r1 = new Room(1, 0, 3);
+            cre1.setRoomId(r1.getId());
             cre1.setRoomNr(r1.getRoomNr());
             cre1.setFloor(r1.getFloor());
             cre1.setCapacity(r1.getCapacity());
@@ -56,6 +57,7 @@ public class CommandClientApplication {
 
             CreateRoomEvent cre2 = new CreateRoomEvent();
             Room r2 = new Room(2, 0, 2);
+            cre2.setRoomId(r2.getId());
             cre2.setRoomNr(r2.getRoomNr());
             cre2.setFloor(r2.getFloor());
             cre2.setCapacity(r2.getCapacity());
@@ -64,6 +66,7 @@ public class CommandClientApplication {
 
             CreateRoomEvent cre3 = new CreateRoomEvent();
             Room r3 = new Room(11, 1, 4);
+            cre3.setRoomId(r3.getId());
             cre3.setRoomNr(r3.getRoomNr());
             cre3.setFloor(r3.getFloor());
             cre3.setCapacity(r3.getCapacity());
@@ -72,6 +75,7 @@ public class CommandClientApplication {
 
             CreateRoomEvent cre4 = new CreateRoomEvent();
             Room r4 = new Room(12, 1, 2);
+            cre4.setRoomId(r4.getId());
             cre4.setRoomNr(r4.getRoomNr());
             cre4.setFloor(r4.getFloor());
             cre4.setCapacity(r4.getCapacity());
@@ -80,6 +84,7 @@ public class CommandClientApplication {
 
             CreateRoomEvent cre5 = new CreateRoomEvent();
             Room r5 = new Room(21, 2, 2);
+            cre5.setRoomId(r5.getId());
             cre5.setRoomNr(r5.getRoomNr());
             cre5.setFloor(r5.getFloor());
             cre5.setCapacity(r5.getCapacity());

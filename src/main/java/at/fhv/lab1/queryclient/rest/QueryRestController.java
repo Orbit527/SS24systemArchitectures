@@ -6,8 +6,11 @@ import at.fhv.lab1.eventbus.events.CreateRoomEvent;
 import at.fhv.lab1.eventbus.events.RoomBookedEvent;
 import at.fhv.lab1.queryclient.database.BookingsProjectedDB;
 import at.fhv.lab1.queryclient.database.CustomersProjectedDB;
+import at.fhv.lab1.queryclient.database.FreeRoomsProjectedDB;
 import at.fhv.lab1.queryclient.domain.BookingsProjected;
 import at.fhv.lab1.queryclient.domain.CustomersProjected;
+import at.fhv.lab1.queryclient.domain.FreeRoomsProjected;
+import at.fhv.lab1.queryclient.domain.Timeframe;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -36,6 +39,15 @@ public class QueryRestController {
         bookingsProjected.setFloor(event.getRoom().getFloor());
 
         BookingsProjectedDB.addBooking(bookingsProjected);
+
+
+        //handle timeFrame setter
+
+        FreeRoomsProjected test = FreeRoomsProjectedDB.getRoomById(event.getRoom().getId());
+        Timeframe timeframe = new Timeframe(event.getStartDate(), event.getEndDate());
+        System.out.println("JAAAAAAAAAAAAAAA" + test + timeframe);
+
+        test.addTimeFrame(timeframe);
 
 
         for (BookingsProjected bp : BookingsProjectedDB.getBookings()) {
@@ -94,7 +106,19 @@ public class QueryRestController {
     public boolean createRoomEvent(@RequestBody CreateRoomEvent event) {
         // TODO: process event through projection
 
-        //TODO: add to DB
+        FreeRoomsProjected freeRoomsProjected = new FreeRoomsProjected();
+
+        freeRoomsProjected.setRoomId(event.getRoomId());
+        freeRoomsProjected.setRoomNr(event.getRoomNr());
+        freeRoomsProjected.setFloor(event.getFloor());
+        freeRoomsProjected.setCapacity(event.getCapacity());
+
+        FreeRoomsProjectedDB.addFreeRoom(freeRoomsProjected);
+
+        for(FreeRoomsProjected frp : FreeRoomsProjectedDB.getFreeRooms()) {
+            System.out.println("FREE ROOMS DB: " + frp);
+        }
+
 
         System.out.println("Event received: " + event);
 

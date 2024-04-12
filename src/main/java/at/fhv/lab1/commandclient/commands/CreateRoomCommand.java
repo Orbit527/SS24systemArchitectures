@@ -2,12 +2,22 @@ package at.fhv.lab1.commandclient.commands;
 
 public class CreateRoomCommand {
 
+    private int roomId;
     private int roomNr;
     private int floor;
     private int capacity;
 
     public CreateRoomCommand() {
 
+    }
+
+
+    public int getRoomId() {
+        return roomId;
+    }
+
+    public void setRoomId(int roomId) {
+        this.roomId = roomId;
     }
 
     public int getRoomNr() {
@@ -37,7 +47,8 @@ public class CreateRoomCommand {
     @Override
     public String toString() {
         return "CreateRoomCommand{" +
-                "roomNr=" + roomNr +
+                "roomId=" + roomId +
+                ", roomNr=" + roomNr +
                 ", floor=" + floor +
                 ", capacity=" + capacity +
                 '}';

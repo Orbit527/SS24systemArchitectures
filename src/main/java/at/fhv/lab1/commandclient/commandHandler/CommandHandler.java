@@ -149,6 +149,7 @@ public class CommandHandler {
 
         CreateRoomEvent createRoomEvent = new CreateRoomEvent();
 
+        createRoomEvent.setRoomId(c.getRoomId());
         createRoomEvent.setRoomNr(c.getRoomNr());
         createRoomEvent.setFloor(c.getFloor());
         createRoomEvent.setCapacity(c.getCapacity());

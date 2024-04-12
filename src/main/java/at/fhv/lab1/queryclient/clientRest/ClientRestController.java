@@ -2,6 +2,7 @@ package at.fhv.lab1.queryclient.clientRest;
 
 import at.fhv.lab1.queryclient.queries.GetBookingsQuery;
 import at.fhv.lab1.queryclient.queries.GetCustomersQuery;
+import at.fhv.lab1.queryclient.queries.GetFreeRoomsQuery;
 import at.fhv.lab1.queryclient.queries.QueryHandler;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -26,6 +27,19 @@ public class ClientRestController {
         getBookingsQuery.setEndDate(getBookingsRest.getEndDate());
 
         return queryHandler.handleGetBookingsQuery(getBookingsQuery);
+
+    }
+
+    @PostMapping(value = "/getFreeRooms")
+    public String getBookings(@RequestBody GetFreeRoomsRest getFreeRoomsRest) {
+
+        GetFreeRoomsQuery getFreeRoomsQuery = new GetFreeRoomsQuery();
+
+        getFreeRoomsQuery.setStartDate(getFreeRoomsRest.getStartDate());
+        getFreeRoomsQuery.setEndDate(getFreeRoomsRest.getEndDate());
+        getFreeRoomsQuery.setPersonCount(getFreeRoomsRest.getPersonCount());
+
+        return queryHandler.handleGetFreeRoomsQuery(getFreeRoomsQuery);
 
     }
 

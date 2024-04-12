@@ -1,12 +1,18 @@
-package at.fhv.lab1.eventbus.events;
+package at.fhv.lab1.queryclient.domain;
 
-public class CreateRoomEvent {
+import java.util.ArrayList;
+
+public class FreeRoomsProjected {
 
     private int roomId;
     private int roomNr;
     private int floor;
     private int capacity;
+    private ArrayList<Timeframe> timeframes;
 
+    public FreeRoomsProjected() {
+        timeframes = new ArrayList<>();
+    }
 
     public int getRoomId() {
         return roomId;
@@ -40,13 +46,26 @@ public class CreateRoomEvent {
         this.capacity = capacity;
     }
 
+    public ArrayList<Timeframe> getTimeframes() {
+        return timeframes;
+    }
+
+    public void setTimeframes(ArrayList<Timeframe> timeframes) {
+        this.timeframes = timeframes;
+    }
+
+    public void addTimeFrame(Timeframe timeframe) {
+        this.timeframes.add(timeframe);
+    }
+
     @Override
     public String toString() {
-        return "CreateRoomEvent{" +
+        return "FreeRoomsProjected{" +
                 "roomId=" + roomId +
                 ", roomNr=" + roomNr +
                 ", floor=" + floor +
                 ", capacity=" + capacity +
+                ", timeframes=" + timeframes +
                 '}';
     }
 }
