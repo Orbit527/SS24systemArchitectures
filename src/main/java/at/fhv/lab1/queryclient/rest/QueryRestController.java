@@ -5,7 +5,9 @@ import at.fhv.lab1.eventbus.events.CreateCustomerEvent;
 import at.fhv.lab1.eventbus.events.CreateRoomEvent;
 import at.fhv.lab1.eventbus.events.RoomBookedEvent;
 import at.fhv.lab1.queryclient.database.BookingsProjectedDB;
+import at.fhv.lab1.queryclient.database.CustomersProjectedDB;
 import at.fhv.lab1.queryclient.domain.BookingsProjected;
+import at.fhv.lab1.queryclient.domain.CustomersProjected;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class QueryRestController {
 
     private static BookingsProjectedDB bookingsProjectedDB;
+    private static CustomersProjectedDB customersProjectedDB;
 
     public QueryRestController() {
         bookingsProjectedDB = new BookingsProjectedDB();
@@ -21,11 +24,8 @@ public class QueryRestController {
 
     @PostMapping(value = "/eventRoomBookedAdded", consumes = "application/json")
     public boolean addRoomBookedEvent(@RequestBody RoomBookedEvent event) {
-        // TODO: process event through projection
 
         System.out.println("Event received: " + event);
-
-
 
         BookingsProjected bookingsProjected = new BookingsProjected();
 
@@ -64,11 +64,29 @@ public class QueryRestController {
 
     @PostMapping(value = "/eventCustomerAdded", consumes = "application/json")
     public boolean addCustomerEvent(@RequestBody CreateCustomerEvent event) {
-        // TODO: process event through projection
-
-        //TODO: add to DB
-
         System.out.println("Event received: " + event);
+
+
+        CustomersProjected customersProjected = new CustomersProjected();
+
+        customersProjected.setFirstname(event.getFirstname());
+        customersProjected.setSurname(event.getSurname());
+        customersProjected.setBirthdate(event.getBirthdate());
+        customersProjected.setEmail(event.getEmail());
+        customersProjected.setAddress(event.getAddress());
+
+        customersProjectedDB.addCustomer(customersProjected);
+
+        //System.out.println("PROJECTED: " + customersProjected);
+
+
+        for (CustomersProjected bp : CustomersProjectedDB.getCustomers()) {
+            System.out.println("TEST: " + bp);
+        }
+
+
+
+
 
         return true;
     }
