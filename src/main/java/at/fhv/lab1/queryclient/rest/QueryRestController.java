@@ -15,11 +15,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class QueryRestController {
 
-    private static BookingsProjectedDB bookingsProjectedDB;
-    private static CustomersProjectedDB customersProjectedDB;
 
     public QueryRestController() {
-        bookingsProjectedDB = new BookingsProjectedDB();
     }
 
     @PostMapping(value = "/eventRoomBookedAdded", consumes = "application/json")
@@ -38,10 +35,10 @@ public class QueryRestController {
         bookingsProjected.setRoomNr(event.getRoom().getRoomNr());
         bookingsProjected.setFloor(event.getRoom().getFloor());
 
-        bookingsProjectedDB.addBooking(bookingsProjected);
+        BookingsProjectedDB.addBooking(bookingsProjected);
 
 
-        for (BookingsProjected bp : bookingsProjectedDB.getBookings()) {
+        for (BookingsProjected bp : BookingsProjectedDB.getBookings()) {
             System.out.println("TEST: " + bp);
         }
 
@@ -75,7 +72,7 @@ public class QueryRestController {
         customersProjected.setEmail(event.getEmail());
         customersProjected.setAddress(event.getAddress());
 
-        customersProjectedDB.addCustomer(customersProjected);
+        CustomersProjectedDB.addCustomer(customersProjected);
 
         //System.out.println("PROJECTED: " + customersProjected);
 
