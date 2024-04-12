@@ -7,8 +7,10 @@ import at.fhv.lab1.commandclient.commands.CreateRoomCommand;
 import at.fhv.lab1.commandclient.commands.RoomBookedCommand;
 import at.fhv.lab1.commandclient.database.BookingDB;
 import at.fhv.lab1.commandclient.database.CustomerDB;
+import at.fhv.lab1.commandclient.database.RoomDB;
 import at.fhv.lab1.commandclient.domain.Booking;
 import at.fhv.lab1.commandclient.domain.Customer;
+import at.fhv.lab1.commandclient.domain.Room;
 import at.fhv.lab1.eventbus.events.CancelBookingEvent;
 import at.fhv.lab1.eventbus.events.CreateCustomerEvent;
 import at.fhv.lab1.eventbus.events.CreateRoomEvent;
@@ -134,16 +136,17 @@ public class CommandHandler {
         System.out.println("CreateCustomerEvent: " + eventPublisher.publishEvent(createCustomerEvent));
 
         return "0";
-
     }
 
     public String handleCreateRoomCommand(CreateRoomCommand c) {
 
-        //TODO: further Validation
+        //check if room number already exists
+        for (Room room : RoomDB.getRooms()) {
+            if (Objects.equals(room.getRoomNr(), c.getRoomNr())) {
+                return "Room with that number already exists!";
+            }
+        }
 
-        //TODO: check that room Number is unique
-
-        //TODO: Create Event and send to EventBus
         CreateRoomEvent createRoomEvent = new CreateRoomEvent();
 
         createRoomEvent.setRoomNr(c.getRoomNr());
@@ -152,9 +155,7 @@ public class CommandHandler {
 
         System.out.println("CreateCustomerEvent: " + eventPublisher.publishEvent(createRoomEvent));
 
-
         return "0";
-
     }
 
 }

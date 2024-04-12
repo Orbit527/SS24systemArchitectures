@@ -52,12 +52,12 @@ public class CustomersProjected {
 
     @Override
     public String toString() {
-        return "CustomersProjected{" +
-                "firstname='" + firstname + '\'' +
-                ", surname='" + surname + '\'' +
-                ", email='" + email + '\'' +
-                ", address='" + address + '\'' +
-                ", birthdate=" + birthdate +
+        return "{" +
+                "\"firstname\":\"" + firstname + "\"" +
+                ", \"surname\":\"" + surname + "\"" +
+                ", \"email\":\"" + email + "\"" +
+                ", \"address\":\"" + address + "\"" +
+                ", \"birthdate\":\"" + birthdate + "\"" +
                 '}';
     }
 }

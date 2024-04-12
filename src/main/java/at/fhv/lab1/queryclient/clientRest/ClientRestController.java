@@ -1,6 +1,7 @@
 package at.fhv.lab1.queryclient.clientRest;
 
 import at.fhv.lab1.queryclient.queries.GetBookingsQuery;
+import at.fhv.lab1.queryclient.queries.GetCustomersQuery;
 import at.fhv.lab1.queryclient.queries.QueryHandler;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -27,4 +28,17 @@ public class ClientRestController {
         return queryHandler.handleGetBookingsQuery(getBookingsQuery);
 
     }
+
+    @PostMapping(value = "/getCustomers")
+    public String getBookings(@RequestBody GetCustomersRest getCustomersRest) {
+
+        GetCustomersQuery getCustomersQuery = new GetCustomersQuery();
+
+        getCustomersQuery.setFirstname(getCustomersRest.getFirstname());
+        getCustomersQuery.setSurname(getCustomersRest.getSurname());
+
+        return queryHandler.handleGetCustomersQuery(getCustomersQuery);
+
+    }
+
 }
