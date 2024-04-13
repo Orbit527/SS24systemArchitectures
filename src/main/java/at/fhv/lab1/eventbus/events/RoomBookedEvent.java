@@ -13,6 +13,17 @@ public class RoomBookedEvent {
     private LocalDate startDate;
     private LocalDate endDate;
 
+    // Default constructor
+    public RoomBookedEvent() {
+    }
+
+    public RoomBookedEvent(Booking booking, Customer customer, Room room, LocalDate startDate, LocalDate endDate) {
+        this.booking = booking;
+        this.customer = customer;
+        this.room = room;
+        this.startDate = startDate;
+        this.endDate = endDate;
+    }
 
     public Booking getBooking() {
         return booking;
@@ -58,12 +69,26 @@ public class RoomBookedEvent {
     public String toString() {
         return "{" +
                 "\"event\":\"" + "RoomBookedEvent" + "\"," +
-                "\"booking\":" + booking + "," +
-                "\"customer\":" + customer + "," +
-                "\"room\":" + room + "," +
+                "\"booking\":{" +
+                "\"id\":" + booking.getId() + "," +
+                "\"customer\":{" +
+                "\"id\":" + customer.getId() + "," +
+                "\"firstname\":\"" + customer.getFirstname() + "\"," +
+                "\"surname\":\"" + customer.getSurname() + "\"," +
+                "\"email\":\"" + customer.getEmail() + "\"," +
+                "\"address\":\"" + customer.getAddress() + "\"," +
+                "\"birthdate\":\"" + customer.getBirthdate() + "\"" +
+                "}," +
+                "\"room\":{" +
+                "\"id\":" + room.getId() + "," +
+                "\"roomNr\":" + room.getRoomNr() + "," +
+                "\"floor\":" + room.getFloor() + "," +
+                "\"capacity\":" + room.getCapacity() +
+                "}," +
                 "\"startDate\":\"" + startDate + "\"," +
                 "\"endDate\":\"" + endDate + "\"" +
-                "}";
+                "}}";
     }
+
 
 }

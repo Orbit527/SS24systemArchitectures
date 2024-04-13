@@ -16,6 +16,14 @@ public class Booking {
         id = idCounter++;
     }
 
+    public Booking(Customer customer, Room room, LocalDate startDate, LocalDate endDate) {
+        this.id = idCounter++;
+        this.customer = customer;
+        this.room = room;
+        this.startDate = startDate;
+        this.endDate = endDate;
+    }
+
     public int getId() {
         return id;
     }

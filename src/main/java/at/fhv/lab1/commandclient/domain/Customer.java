@@ -24,6 +24,18 @@ public class Customer {
         this.address = address;
     }
 
+    /* // TODO: Figure out why this doesnt work or if I even need it
+    public Customer(int id, String firstname, String surname, LocalDate birthdate, String email, String address) {
+        //TODO: chang id to UUID
+        this.id = id;
+        this.firstname = firstname;
+        this.surname = surname;
+        this.birthdate = birthdate;
+        this.email = email;
+        this.address = address;
+    }
+    */
+
     public int getId() {
         return id;
     }

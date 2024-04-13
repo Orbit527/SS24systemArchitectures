@@ -1,5 +1,5 @@
 package at.fhv.lab1.eventbus;
-
+import at.fhv.lab1.commandclient.domain.*;
 import at.fhv.lab1.eventbus.events.*;
 import org.json.JSONObject;
 import org.springframework.cglib.core.Local;
@@ -26,7 +26,7 @@ public class EventRepository {
     public void processEvent(RoomBookedEvent event) {
         // store events in log/DB
         // TODO: Change toString in RoomBookedEvent to put out correct JSON
-        //writeToEventDatabase(event.toString());
+        writeToEventDatabase(event.toString());
         // TODO: notify subscribed read repositories
         System.out.println("Processing Event");
     }
@@ -78,7 +78,7 @@ public class EventRepository {
                 if ("CancelBookingEvent".equals(jsonObject.get("event"))) {
                     CancelBookingEvent cancelBookingEvent = new CancelBookingEvent(jsonObject.getInt("id"));
                     // TODO: should only work once Bookings get Created again
-                    //eventPublisher.publishEvent(cancelBookingEvent);
+                    eventPublisher.publishEvent(cancelBookingEvent);
                     System.out.println("CancelBookingEvent Triggered");
                 }
                 if ("CreateCustomerEvent".equals(jsonObject.get("event"))) {
@@ -89,7 +89,6 @@ public class EventRepository {
                     eventPublisher.publishEvent(createCustomerEvent);
                 }
                 if ("CreateRoomEvent".equals(jsonObject.get("event"))) {
-                    // int roomId, int roomNr, int floor, int capacity
                     CreateRoomEvent createRoomEvent = new CreateRoomEvent(jsonObject.getInt("roomId"), jsonObject.getInt("roomNr"), jsonObject.getInt("floor"), jsonObject.getInt("capacity"));
                     eventPublisher.publishEvent(createRoomEvent);
                     System.out.println("CreateRoomEvent Triggered");
@@ -99,12 +98,27 @@ public class EventRepository {
                     System.out.println("Event Triggered");
                 }
                 if ("RoomBookedEvent".equals(jsonObject.get("event"))) {
+                    JSONObject customerJson = jsonObject.getJSONObject("booking").getJSONObject("customer");
+                    JSONObject roomJson = jsonObject.getJSONObject("booking").getJSONObject("room");
+                    JSONObject bookingJson = jsonObject.getJSONObject("booking");
+
+                    // TODO: Add ids to these (at the moment id destroys everything)
+                    Customer customer = new Customer(customerJson.getString("firstname"), customerJson.getString("surname"), LocalDate.parse(customerJson.getString("birthdate")), customerJson.getString("email"), customerJson.getString("address"));
+                    System.out.println("AH " + customer.toString());
+                    Room room = new Room(roomJson.getInt("roomNr"), roomJson.getInt("floor"), roomJson.getInt("capacity"));
+                    System.out.println("BH " + room.toString());
+                    Booking booking = new Booking(customer, room, LocalDate.parse(bookingJson.getString("startDate")), LocalDate.parse(bookingJson.getString("endDate")));
+                    System.out.println("CH " + booking.toString());
+                    RoomBookedEvent roomBookedEvent = new RoomBookedEvent(booking, customer, room, LocalDate.parse(bookingJson.getString("startDate")), LocalDate.parse(bookingJson.getString("endDate")));
+                    System.out.println("DH " + roomBookedEvent.toString());
+                    // TODO: Figure out why this doesnt work
+                    //eventPublisher.publishEvent(roomBookedEvent);
                     System.out.println("RoomBookedEvent Triggered");
                 }
 
             }
         } catch (Exception e) {
-            System.err.println("An error occurred while reading the file: " + e.getMessage());
+            System.err.println("An error occurred: " + e.getMessage());
         }
     }
 
