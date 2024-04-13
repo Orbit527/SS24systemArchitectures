@@ -3,12 +3,11 @@ package at.fhv.lab1.queryclient.queries;
 import at.fhv.lab1.queryclient.database.BookingsProjectedDB;
 import at.fhv.lab1.queryclient.database.CustomersProjectedDB;
 import at.fhv.lab1.queryclient.database.FreeRoomsProjectedDB;
-import at.fhv.lab1.queryclient.domain.BookingsProjected;
-import at.fhv.lab1.queryclient.domain.CustomersProjected;
-import at.fhv.lab1.queryclient.domain.FreeRoomsProjected;
+import at.fhv.lab1.queryclient.domain.BookingProjected;
+import at.fhv.lab1.queryclient.domain.CustomerProjected;
+import at.fhv.lab1.queryclient.domain.FreeRoomProjected;
 import at.fhv.lab1.queryclient.domain.Timeframe;
 
-import java.sql.Time;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -38,7 +37,7 @@ public class QueryHandler {
 
         //TODO: remove last colon
 
-        for (BookingsProjected b : BookingsProjectedDB.getBookings()) {
+        for (BookingProjected b : BookingsProjectedDB.getBookings()) {
             if(b.getStartDate().isBefore(query.getEndDate()) && b.getEndDate().isAfter(query.getStartDate())) {
                 output.append(b.toString());
                 output.append(",");
@@ -70,7 +69,7 @@ public class QueryHandler {
 
         //TODO: filter according to timeframe and personCount
 
-        List<FreeRoomsProjected> roomsFilteredByCapacity = FreeRoomsProjectedDB.getFreeRooms()
+        List<FreeRoomProjected> roomsFilteredByCapacity = FreeRoomsProjectedDB.getFreeRooms()
                 .stream()
                 .filter(c -> c.getCapacity() == query.getPersonCount())
                 .collect(Collectors.toList());
@@ -80,7 +79,7 @@ public class QueryHandler {
         output.append("{\"freeRooms\": [");
 
         //test for overlapping timeframes
-        for(FreeRoomsProjected f : roomsFilteredByCapacity) {
+        for(FreeRoomProjected f : roomsFilteredByCapacity) {
             if(hasOverlap(f.getTimeframes(), query.getStartDate(), query.getEndDate()) == false) {
                 output.append(f);
                 output.append(",");
@@ -129,7 +128,7 @@ public class QueryHandler {
 
         //TODO: remove last colon
 
-        for (CustomersProjected c : CustomersProjectedDB.getCustomers()) {
+        for (CustomerProjected c : CustomersProjectedDB.getCustomers()) {
             //check for firstname and lastname
                 output.append(c.toString());
                 output.append(",");

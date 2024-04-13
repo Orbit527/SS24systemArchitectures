@@ -1,8 +1,9 @@
 package at.fhv.lab1.queryclient.domain;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
-public class FreeRoomsProjected {
+public class FreeRoomProjected {
 
     private int roomId;
     private int roomNr;
@@ -10,7 +11,7 @@ public class FreeRoomsProjected {
     private int capacity;
     private ArrayList<Timeframe> timeframes;
 
-    public FreeRoomsProjected() {
+    public FreeRoomProjected() {
         timeframes = new ArrayList<>();
     }
 
@@ -50,12 +51,25 @@ public class FreeRoomsProjected {
         return timeframes;
     }
 
+    public Timeframe getTimeFrameByDate(LocalDate startDate, LocalDate endDate) {
+        for (Timeframe timeframe : this.timeframes) {
+            if (timeframe.getStartDate() == startDate && timeframe.getEndDate() == endDate) {
+                return timeframe;
+            }
+        }
+        return null;
+    }
+
     public void setTimeframes(ArrayList<Timeframe> timeframes) {
         this.timeframes = timeframes;
     }
 
     public void addTimeFrame(Timeframe timeframe) {
         this.timeframes.add(timeframe);
+    }
+
+    public void removeTimeframe(Timeframe timeframe) {
+        this.timeframes.remove(timeframe);
     }
 
     @Override

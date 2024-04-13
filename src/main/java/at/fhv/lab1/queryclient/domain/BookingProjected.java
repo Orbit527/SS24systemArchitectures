@@ -2,27 +2,29 @@ package at.fhv.lab1.queryclient.domain;
 
 import java.time.LocalDate;
 
-public class BookingsProjected {
+public class BookingProjected {
 
     private int bookingId;
     private LocalDate startDate;
     private LocalDate endDate;
     private String customerFirstname;
     private String customerSurname;
+    private int roomId;
     private int roomNr;
     private int capacity;
     private int floor;
 
 
-    public BookingsProjected() {
+    public BookingProjected() {
 
     }
-    public BookingsProjected(int bookingId, LocalDate startDate, LocalDate endDate, String customerName, String customerSurname, int roomNr, int capacity, int floor) {
+    public BookingProjected(int bookingId, LocalDate startDate, LocalDate endDate, String customerName, String customerSurname, int roomId, int roomNr, int capacity, int floor) {
         this.bookingId = bookingId;
         this.startDate = startDate;
         this.endDate = endDate;
         this.customerFirstname = customerName;
         this.customerSurname = customerSurname;
+        this.roomId = roomId;
         this.roomNr = roomNr;
         this.capacity = capacity;
         this.floor = floor;
@@ -68,6 +70,14 @@ public class BookingsProjected {
         this.customerSurname = customerSurname;
     }
 
+    public int getRoomId() {
+        return roomId;
+    }
+
+    public void setRoomId(int roomId) {
+        this.roomId = roomId;
+    }
+
     public int getRoomNr() {
         return roomNr;
     }
@@ -101,6 +111,7 @@ public class BookingsProjected {
                 ", \"endDate\":\"" + endDate + "\"" +
                 ", \"customerFirstname\":\"" + customerFirstname + "\"" +
                 ", \"customerSurname\":\"" + customerSurname + "\"" +
+                ", \"roomId\":" + roomId +
                 ", \"roomNr\":" + roomNr +
                 ", \"capacity\":" + capacity +
                 ", \"floor\":" + floor +

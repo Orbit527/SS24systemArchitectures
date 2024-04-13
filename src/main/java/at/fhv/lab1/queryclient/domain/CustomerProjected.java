@@ -2,7 +2,7 @@ package at.fhv.lab1.queryclient.domain;
 
 import java.time.LocalDate;
 
-public class CustomersProjected {
+public class CustomerProjected {
 
     private String firstname;
     private String surname;
