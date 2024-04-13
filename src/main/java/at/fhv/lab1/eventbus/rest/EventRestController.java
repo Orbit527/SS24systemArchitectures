@@ -37,7 +37,7 @@ public class EventRestController {
     @PostMapping(value = "/bookingcanceledevent", consumes = "application/json")
     public boolean bookingCanceledEvent(@RequestBody CancelBookingEvent event) {
         // TODO: process event in repository
-        //repository.processEvent(event);       TODO: Add in Eventbus
+        repository.processEvent(event);
         System.out.println("Event received: " + event);
         publisher.publishEvent(event);
         return true;
@@ -46,7 +46,7 @@ public class EventRestController {
     @PostMapping(value = "/customercreateevent", consumes = "application/json")
     public boolean customerCreatedEvent(@RequestBody CreateCustomerEvent event) {
         // TODO: process event in repository
-        //repository.processEvent(event); TODO: Add in Eventbus
+        repository.processEvent(event);
         System.out.println("Event received: " + event);
         publisher.publishEvent(event);
         return true;
@@ -55,9 +55,15 @@ public class EventRestController {
     @PostMapping(value = "/roomcreateevent", consumes = "application/json")
     public boolean roomCreatedEvent(@RequestBody CreateRoomEvent event) {
         // TODO: process event in repository
-        //repository.processEvent(event); TODO: Add in Eventbus
+        repository.processEvent(event);
         System.out.println("Event received: " + event);
         publisher.publishEvent(event);
         return true;
+    }
+
+    @GetMapping("/readoutallevents")
+    public String readoutAllEvents() {
+
+        return repository.getAllFromEventDatabase();
     }
 }
