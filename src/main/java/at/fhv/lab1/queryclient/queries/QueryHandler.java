@@ -11,6 +11,7 @@ import at.fhv.lab1.queryclient.domain.Timeframe;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 
@@ -108,27 +109,31 @@ public class QueryHandler {
         // retrieve data from DB
         // and send data back
 
-        System.out.println(query.getFirstname());
-        System.out.println(query.getSurname());
+
+
+        ArrayList<CustomerProjected> queryResult;
+
+        //check which fields are set
+        if ((query.getFirstname() != null && !query.getFirstname().isEmpty()) && (query.getSurname() != null && !query.getSurname().isEmpty())) {
+            //first and surname are stated
+            queryResult = CustomersProjectedDB.getCustomerByFirstAndSurname(query.getFirstname(), query.getSurname());
+        } else if ((query.getFirstname() == null || query.getFirstname().isEmpty()) && (query.getSurname() == null || query.getSurname().isEmpty())) {
+            //no name is stated
+            queryResult = CustomersProjectedDB.getCustomers();
+        } else {
+            //either first or surname is stated
+            if(!Objects.equals(query.getFirstname(), "null") && !query.getFirstname().isEmpty()) {
+                queryResult = CustomersProjectedDB.getCustomerByFirstname(query.getFirstname());
+            } else {
+                queryResult = CustomersProjectedDB.getCustomerBySurname(query.getSurname());
+            }
+        }
 
         StringBuilder output = new StringBuilder();
         output.append("{\"customers\": [");
 
-        //TODO!
-
-        // check if firstname is set in query
-        /*
-        if(!Objects.equals(query.getFirstname(), "null") && !query.getFirstname().isEmpty()) {
-            ArrayList<CustomersProjected> test = CustomersProjectedDB.getCustomerByFirstname(query.getFirstname());
-            System.out.println("PEOPLE WITH FIRSTNAME: " + test);
-        }
-         */
-
-
-
         //TODO: remove last colon
-
-        for (CustomerProjected c : CustomersProjectedDB.getCustomers()) {
+        for (CustomerProjected c : queryResult) {
             //check for firstname and lastname
                 output.append(c.toString());
                 output.append(",");
@@ -138,6 +143,5 @@ public class QueryHandler {
         output.append("]}");
 
         return output.toString();
-
     }
 }
