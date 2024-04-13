@@ -10,6 +10,18 @@ public class CreateCustomerEvent {
     private String address;
     private LocalDate birthdate;
 
+    // Default constructor
+    public CreateCustomerEvent() {
+    }
+
+    public CreateCustomerEvent(String firstname, String surname, String email, String address, LocalDate birthdate) {
+        this.firstname = firstname;
+        this.surname = surname;
+        this.email = email;
+        this.address = address;
+        this.birthdate = birthdate;
+    }
+
     public String getFirstname() {
         return firstname;
     }
@@ -52,12 +64,14 @@ public class CreateCustomerEvent {
 
     @Override
     public String toString() {
-        return "CreateCustomerEvent{" +
-                "firstname='" + firstname + '\'' +
-                ", surname='" + surname + '\'' +
-                ", email='" + email + '\'' +
-                ", address='" + address + '\'' +
-                ", birthdate=" + birthdate +
-                '}';
+        return "{" +
+                "\"event\":\"" + "CreateCustomerEvent" + "\"," +
+                "\"firstname\":\"" + firstname + "\"," +
+                "\"surname\":\"" + surname + "\"," +
+                "\"email\":\"" + email + "\"," +
+                "\"address\":\"" + address + "\"," +
+                "\"birthdate\":\"" + birthdate + "\"" +
+                "}";
     }
+
 }

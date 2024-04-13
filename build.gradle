@@ -20,6 +20,8 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.1.0'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    implementation 'com.vaadin.external.google:android-json:0.0.20131108.vaadin1'
+    implementation 'net.minidev:json-smart:2.5.0'
 }
 
 springBoot {

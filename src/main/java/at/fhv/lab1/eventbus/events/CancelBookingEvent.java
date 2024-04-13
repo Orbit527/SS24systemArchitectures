@@ -4,6 +4,14 @@ public class CancelBookingEvent {
 
     private int id;
 
+    // Default constructor
+    public CancelBookingEvent() {
+    }
+
+    public CancelBookingEvent(int id) {
+        this.id = id;
+    }
+
     public int getId() {
         return id;
     }
@@ -14,8 +22,10 @@ public class CancelBookingEvent {
 
     @Override
     public String toString() {
-        return "CancelBookingEvent{" +
-                "id=" + id +
-                '}';
+        return "{" +
+                "\"event\":\"" + "CancelBookingEvent" + "\"," +
+                "\"id\":" + id +
+                "}";
     }
+
 }

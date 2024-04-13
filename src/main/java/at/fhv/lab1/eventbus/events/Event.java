@@ -32,10 +32,12 @@ public class Event {
 
     @Override
     public String toString() {
-        return "Event{" +
-                "customer='" + customer + '\'' +
-                ", timestamp=" + timestamp +
-                ", content='" + content + '\'' +
-                '}';
+        return "{" +
+                "\"event\":\"" + "Event" + "\"," +
+                "\"customer\":\"" + customer + "\"," +
+                "\"timestamp\":" + timestamp + "," +
+                "\"content\":\"" + content + "\"" +
+                "}";
     }
+
 }

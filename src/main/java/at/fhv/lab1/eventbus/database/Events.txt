@@ -1,73 +1,10 @@
-CreateCustomerEvent{firstname='Hansjörg', surname='Peterson', email='hansjoerg.egon@mail.com', address='Straße 123', birthdate=2001-11-12}
-RoomBookedEvent{booking=Booking{id=2, customer=Customer{id=0, firstname='Max', surname='Mustermann', email='max.mustermann@max.com', address='Straße 123', birthdate=2001-11-12}, room=Room{id=0, roomNr=1, floor=0, capacity=3}, startDate=2024-04-10, endDate=2024-04-15}, customer=Customer{id=0, firstname='Max', surname='Mustermann', email='max.mustermann@max.com', address='Straße 123', birthdate=2001-11-12}, room=Room{id=0, roomNr=1, floor=0, capacity=3}, startDate=2024-04-10, endDate=2024-04-15}
-CreateRoomEvent{roomId=0, roomNr=1, floor=0, capacity=3}
-CreateRoomEvent{roomId=1, roomNr=2, floor=0, capacity=2}
-CreateRoomEvent{roomId=2, roomNr=11, floor=1, capacity=4}
-CreateRoomEvent{roomId=3, roomNr=12, floor=1, capacity=2}
-CreateRoomEvent{roomId=4, roomNr=21, floor=2, capacity=2}
-CreateCustomerEvent{firstname='Max', surname='Mustermann', email='max.mustermann@max.com', address='Straße 123', birthdate=2001-11-12}
-CreateCustomerEvent{firstname='Eva', surname='Müller', email='eva.mueller@mail.com', address='Gasse 456', birthdate=1988-01-06}
-CreateCustomerEvent{firstname='Hans', surname='Franz', email='hans.franz@mail.com', address='Bach 2', birthdate=1924-04-17}
-RoomBookedEvent{booking=Booking{id=0, customer=Customer{id=0, firstname='Max', surname='Mustermann', email='max.mustermann@max.com', address='Straße 123', birthdate=2001-11-12}, room=Room{id=1, roomNr=2, floor=0, capacity=2}, startDate=2024-04-10, endDate=2024-04-15}, customer=Customer{id=0, firstname='Max', surname='Mustermann', email='max.mustermann@max.com', address='Straße 123', birthdate=2001-11-12}, room=Room{id=1, roomNr=2, floor=0, capacity=2}, startDate=2024-04-10, endDate=2024-04-15}
-RoomBookedEvent{booking=Booking{id=1, customer=Customer{id=1, firstname='Eva', surname='Müller', email='eva.mueller@mail.com', address='Gasse 456', birthdate=1988-01-06}, room=Room{id=3, roomNr=12, floor=1, capacity=2}, startDate=2024-04-08, endDate=2024-04-17}, customer=Customer{id=1, firstname='Eva', surname='Müller', email='eva.mueller@mail.com', address='Gasse 456', birthdate=1988-01-06}, room=Room{id=3, roomNr=12, floor=1, capacity=2}, startDate=2024-04-08, endDate=2024-04-17}
-CreateRoomEvent{roomId=0, roomNr=1, floor=0, capacity=3}
-CreateRoomEvent{roomId=1, roomNr=2, floor=0, capacity=2}
-CreateRoomEvent{roomId=2, roomNr=11, floor=1, capacity=4}
-CreateRoomEvent{roomId=3, roomNr=12, floor=1, capacity=2}
-CreateRoomEvent{roomId=4, roomNr=21, floor=2, capacity=2}
-CreateCustomerEvent{firstname='Max', surname='Mustermann', email='max.mustermann@max.com', address='Straße 123', birthdate=2001-11-12}
-CreateCustomerEvent{firstname='Eva', surname='Müller', email='eva.mueller@mail.com', address='Gasse 456', birthdate=1988-01-06}
-CreateCustomerEvent{firstname='Hans', surname='Franz', email='hans.franz@mail.com', address='Bach 2', birthdate=1924-04-17}
-RoomBookedEvent{booking=Booking{id=0, customer=Customer{id=0, firstname='Max', surname='Mustermann', email='max.mustermann@max.com', address='Straße 123', birthdate=2001-11-12}, room=Room{id=1, roomNr=2, floor=0, capacity=2}, startDate=2024-04-10, endDate=2024-04-15}, customer=Customer{id=0, firstname='Max', surname='Mustermann', email='max.mustermann@max.com', address='Straße 123', birthdate=2001-11-12}, room=Room{id=1, roomNr=2, floor=0, capacity=2}, startDate=2024-04-10, endDate=2024-04-15}
-RoomBookedEvent{booking=Booking{id=1, customer=Customer{id=1, firstname='Eva', surname='Müller', email='eva.mueller@mail.com', address='Gasse 456', birthdate=1988-01-06}, room=Room{id=3, roomNr=12, floor=1, capacity=2}, startDate=2024-04-08, endDate=2024-04-17}, customer=Customer{id=1, firstname='Eva', surname='Müller', email='eva.mueller@mail.com', address='Gasse 456', birthdate=1988-01-06}, room=Room{id=3, roomNr=12, floor=1, capacity=2}, startDate=2024-04-08, endDate=2024-04-17}
-CreateRoomEvent{roomId=0, roomNr=1, floor=0, capacity=3}
-CreateRoomEvent{roomId=1, roomNr=2, floor=0, capacity=2}
-CreateRoomEvent{roomId=2, roomNr=11, floor=1, capacity=4}
-CreateRoomEvent{roomId=3, roomNr=12, floor=1, capacity=2}
-CreateRoomEvent{roomId=4, roomNr=21, floor=2, capacity=2}
-CreateCustomerEvent{firstname='Max', surname='Mustermann', email='max.mustermann@max.com', address='Straße 123', birthdate=2001-11-12}
-CreateCustomerEvent{firstname='Eva', surname='Müller', email='eva.mueller@mail.com', address='Gasse 456', birthdate=1988-01-06}
-CreateCustomerEvent{firstname='Hans', surname='Franz', email='hans.franz@mail.com', address='Bach 2', birthdate=1924-04-17}
-RoomBookedEvent{booking=Booking{id=0, customer=Customer{id=0, firstname='Max', surname='Mustermann', email='max.mustermann@max.com', address='Straße 123', birthdate=2001-11-12}, room=Room{id=1, roomNr=2, floor=0, capacity=2}, startDate=2024-04-10, endDate=2024-04-15}, customer=Customer{id=0, firstname='Max', surname='Mustermann', email='max.mustermann@max.com', address='Straße 123', birthdate=2001-11-12}, room=Room{id=1, roomNr=2, floor=0, capacity=2}, startDate=2024-04-10, endDate=2024-04-15}
-RoomBookedEvent{booking=Booking{id=1, customer=Customer{id=1, firstname='Eva', surname='Müller', email='eva.mueller@mail.com', address='Gasse 456', birthdate=1988-01-06}, room=Room{id=3, roomNr=12, floor=1, capacity=2}, startDate=2024-04-08, endDate=2024-04-17}, customer=Customer{id=1, firstname='Eva', surname='Müller', email='eva.mueller@mail.com', address='Gasse 456', birthdate=1988-01-06}, room=Room{id=3, roomNr=12, floor=1, capacity=2}, startDate=2024-04-08, endDate=2024-04-17}
-CreateCustomerEvent{firstname='Hansjörg', surname='Peterson', email='hansjoerg.egon@mail.com', address='Straße 123', birthdate=2001-11-12}
-CreateRoomEvent{roomId=0, roomNr=1, floor=0, capacity=3}
-CreateRoomEvent{roomId=1, roomNr=2, floor=0, capacity=2}
-CreateRoomEvent{roomId=2, roomNr=11, floor=1, capacity=4}
-CreateRoomEvent{roomId=3, roomNr=12, floor=1, capacity=2}
-CreateRoomEvent{roomId=4, roomNr=21, floor=2, capacity=2}
-CreateCustomerEvent{firstname='Max', surname='Mustermann', email='max.mustermann@max.com', address='Straße 123', birthdate=2001-11-12}
-CreateCustomerEvent{firstname='Eva', surname='Müller', email='eva.mueller@mail.com', address='Gasse 456', birthdate=1988-01-06}
-CreateCustomerEvent{firstname='Hans', surname='Franz', email='hans.franz@mail.com', address='Bach 2', birthdate=1924-04-17}
-RoomBookedEvent{booking=Booking{id=0, customer=Customer{id=0, firstname='Max', surname='Mustermann', email='max.mustermann@max.com', address='Straße 123', birthdate=2001-11-12}, room=Room{id=1, roomNr=2, floor=0, capacity=2}, startDate=2024-04-10, endDate=2024-04-15}, customer=Customer{id=0, firstname='Max', surname='Mustermann', email='max.mustermann@max.com', address='Straße 123', birthdate=2001-11-12}, room=Room{id=1, roomNr=2, floor=0, capacity=2}, startDate=2024-04-10, endDate=2024-04-15}
-RoomBookedEvent{booking=Booking{id=1, customer=Customer{id=1, firstname='Eva', surname='Müller', email='eva.mueller@mail.com', address='Gasse 456', birthdate=1988-01-06}, room=Room{id=3, roomNr=12, floor=1, capacity=2}, startDate=2024-04-08, endDate=2024-04-17}, customer=Customer{id=1, firstname='Eva', surname='Müller', email='eva.mueller@mail.com', address='Gasse 456', birthdate=1988-01-06}, room=Room{id=3, roomNr=12, floor=1, capacity=2}, startDate=2024-04-08, endDate=2024-04-17}
-CreateRoomEvent{roomId=0, roomNr=1, floor=0, capacity=3}
-CreateRoomEvent{roomId=1, roomNr=2, floor=0, capacity=2}
-CreateRoomEvent{roomId=2, roomNr=11, floor=1, capacity=4}
-CreateRoomEvent{roomId=3, roomNr=12, floor=1, capacity=2}
-CreateRoomEvent{roomId=4, roomNr=21, floor=2, capacity=2}
-CreateCustomerEvent{firstname='Max', surname='Mustermann', email='max.mustermann@max.com', address='Straße 123', birthdate=2001-11-12}
-CreateCustomerEvent{firstname='Eva', surname='Müller', email='eva.mueller@mail.com', address='Gasse 456', birthdate=1988-01-06}
-CreateCustomerEvent{firstname='Hans', surname='Franz', email='hans.franz@mail.com', address='Bach 2', birthdate=1924-04-17}
-RoomBookedEvent{booking=Booking{id=0, customer=Customer{id=0, firstname='Max', surname='Mustermann', email='max.mustermann@max.com', address='Straße 123', birthdate=2001-11-12}, room=Room{id=1, roomNr=2, floor=0, capacity=2}, startDate=2024-04-10, endDate=2024-04-15}, customer=Customer{id=0, firstname='Max', surname='Mustermann', email='max.mustermann@max.com', address='Straße 123', birthdate=2001-11-12}, room=Room{id=1, roomNr=2, floor=0, capacity=2}, startDate=2024-04-10, endDate=2024-04-15}
-RoomBookedEvent{booking=Booking{id=1, customer=Customer{id=1, firstname='Eva', surname='Müller', email='eva.mueller@mail.com', address='Gasse 456', birthdate=1988-01-06}, room=Room{id=3, roomNr=12, floor=1, capacity=2}, startDate=2024-04-08, endDate=2024-04-17}, customer=Customer{id=1, firstname='Eva', surname='Müller', email='eva.mueller@mail.com', address='Gasse 456', birthdate=1988-01-06}, room=Room{id=3, roomNr=12, floor=1, capacity=2}, startDate=2024-04-08, endDate=2024-04-17}
-CreateRoomEvent{roomId=0, roomNr=1, floor=0, capacity=3}
-CreateRoomEvent{roomId=1, roomNr=2, floor=0, capacity=2}
-CreateRoomEvent{roomId=2, roomNr=11, floor=1, capacity=4}
-CreateRoomEvent{roomId=3, roomNr=12, floor=1, capacity=2}
-CreateRoomEvent{roomId=4, roomNr=21, floor=2, capacity=2}
-CreateCustomerEvent{firstname='Max', surname='Mustermann', email='max.mustermann@max.com', address='Straße 123', birthdate=2001-11-12}
-CreateCustomerEvent{firstname='Eva', surname='Müller', email='eva.mueller@mail.com', address='Gasse 456', birthdate=1988-01-06}
-CreateCustomerEvent{firstname='Hans', surname='Franz', email='hans.franz@mail.com', address='Bach 2', birthdate=1924-04-17}
-RoomBookedEvent{booking=Booking{id=0, customer=Customer{id=0, firstname='Max', surname='Mustermann', email='max.mustermann@max.com', address='Straße 123', birthdate=2001-11-12}, room=Room{id=1, roomNr=2, floor=0, capacity=2}, startDate=2024-04-10, endDate=2024-04-15}, customer=Customer{id=0, firstname='Max', surname='Mustermann', email='max.mustermann@max.com', address='Straße 123', birthdate=2001-11-12}, room=Room{id=1, roomNr=2, floor=0, capacity=2}, startDate=2024-04-10, endDate=2024-04-15}
-RoomBookedEvent{booking=Booking{id=1, customer=Customer{id=1, firstname='Eva', surname='Müller', email='eva.mueller@mail.com', address='Gasse 456', birthdate=1988-01-06}, room=Room{id=3, roomNr=12, floor=1, capacity=2}, startDate=2024-04-08, endDate=2024-04-17}, customer=Customer{id=1, firstname='Eva', surname='Müller', email='eva.mueller@mail.com', address='Gasse 456', birthdate=1988-01-06}, room=Room{id=3, roomNr=12, floor=1, capacity=2}, startDate=2024-04-08, endDate=2024-04-17}
-CreateRoomEvent{roomId=0, roomNr=1, floor=0, capacity=3}
-CreateRoomEvent{roomId=1, roomNr=2, floor=0, capacity=2}
-CreateRoomEvent{roomId=2, roomNr=11, floor=1, capacity=4}
-CreateRoomEvent{roomId=3, roomNr=12, floor=1, capacity=2}
-CreateRoomEvent{roomId=4, roomNr=21, floor=2, capacity=2}
-CreateCustomerEvent{firstname='Max', surname='Mustermann', email='max.mustermann@max.com', address='Straße 123', birthdate=2001-11-12}
-CreateCustomerEvent{firstname='Eva', surname='Müller', email='eva.mueller@mail.com', address='Gasse 456', birthdate=1988-01-06}
-CreateCustomerEvent{firstname='Hans', surname='Franz', email='hans.franz@mail.com', address='Bach 2', birthdate=1924-04-17}
-RoomBookedEvent{booking=Booking{id=0, customer=Customer{id=0, firstname='Max', surname='Mustermann', email='max.mustermann@max.com', address='Straße 123', birthdate=2001-11-12}, room=Room{id=1, roomNr=2, floor=0, capacity=2}, startDate=2024-04-10, endDate=2024-04-15}, customer=Customer{id=0, firstname='Max', surname='Mustermann', email='max.mustermann@max.com', address='Straße 123', birthdate=2001-11-12}, room=Room{id=1, roomNr=2, floor=0, capacity=2}, startDate=2024-04-10, endDate=2024-04-15}
-RoomBookedEvent{booking=Booking{id=1, customer=Customer{id=1, firstname='Eva', surname='Müller', email='eva.mueller@mail.com', address='Gasse 456', birthdate=1988-01-06}, room=Room{id=3, roomNr=12, floor=1, capacity=2}, startDate=2024-04-08, endDate=2024-04-17}, customer=Customer{id=1, firstname='Eva', surname='Müller', email='eva.mueller@mail.com', address='Gasse 456', birthdate=1988-01-06}, room=Room{id=3, roomNr=12, floor=1, capacity=2}, startDate=2024-04-08, endDate=2024-04-17}
+{"event":"CreateRoomEvent","roomId":0,"roomNr":1,"floor":0,"capacity":3}
+{"event":"CreateRoomEvent","roomId":1,"roomNr":2,"floor":0,"capacity":2}
+{"event":"CreateRoomEvent","roomId":2,"roomNr":11,"floor":1,"capacity":4}
+{"event":"CreateRoomEvent","roomId":3,"roomNr":12,"floor":1,"capacity":2}
+{"event":"CreateRoomEvent","roomId":4,"roomNr":21,"floor":2,"capacity":2}
+{"event":"CreateCustomerEvent","firstname":"Max","surname":"Mustermann","email":"max.mustermann@max.com","address":"Straße 123","birthdate":"2001-11-12"}
+{"event":"CreateCustomerEvent","firstname":"Eva","surname":"Müller","email":"eva.mueller@mail.com","address":"Gasse 456","birthdate":"1988-01-06"}
+{"event":"CreateCustomerEvent","firstname":"Hans","surname":"Franz","email":"hans.franz@mail.com","address":"Bach 2","birthdate":"1924-04-17"}
+{"event":"RoomBookedEvent","booking":Booking{id=0, customer=Customer{id=0, firstname='Max', surname='Mustermann', email='max.mustermann@max.com', address='Straße 123', birthdate=2001-11-12}, room=Room{id=1, roomNr=2, floor=0, capacity=2}, startDate=2024-04-10, endDate=2024-04-15},"customer":Customer{id=0, firstname='Max', surname='Mustermann', email='max.mustermann@max.com', address='Straße 123', birthdate=2001-11-12},"room":Room{id=1, roomNr=2, floor=0, capacity=2},"startDate":"2024-04-10","endDate":"2024-04-15"}
+{"event":"RoomBookedEvent","booking":Booking{id=1, customer=Customer{id=1, firstname='Eva', surname='Müller', email='eva.mueller@mail.com', address='Gasse 456', birthdate=1988-01-06}, room=Room{id=3, roomNr=12, floor=1, capacity=2}, startDate=2024-04-08, endDate=2024-04-17},"customer":Customer{id=1, firstname='Eva', surname='Müller', email='eva.mueller@mail.com', address='Gasse 456', birthdate=1988-01-06},"room":Room{id=3, roomNr=12, floor=1, capacity=2},"startDate":"2024-04-08","endDate":"2024-04-17"}

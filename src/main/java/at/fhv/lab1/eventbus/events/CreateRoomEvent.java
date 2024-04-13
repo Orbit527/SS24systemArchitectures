@@ -7,6 +7,16 @@ public class CreateRoomEvent {
     private int floor;
     private int capacity;
 
+    // Default constructor
+    public CreateRoomEvent() {
+    }
+
+    public CreateRoomEvent(int roomId, int roomNr, int floor, int capacity) {
+        this.roomId = roomId;
+        this.roomNr = roomNr;
+        this.floor = floor;
+        this.capacity = capacity;
+    }
 
     public int getRoomId() {
         return roomId;
@@ -42,11 +52,13 @@ public class CreateRoomEvent {
 
     @Override
     public String toString() {
-        return "CreateRoomEvent{" +
-                "roomId=" + roomId +
-                ", roomNr=" + roomNr +
-                ", floor=" + floor +
-                ", capacity=" + capacity +
-                '}';
+        return "{" +
+                "\"event\":\"" + "CreateRoomEvent" + "\"," +
+                "\"roomId\":" + roomId + "," +
+                "\"roomNr\":" + roomNr + "," +
+                "\"floor\":" + floor + "," +
+                "\"capacity\":" + capacity +
+                "}";
     }
+
 }

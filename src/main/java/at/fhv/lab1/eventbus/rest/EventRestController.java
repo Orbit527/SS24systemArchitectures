@@ -63,7 +63,13 @@ public class EventRestController {
 
     @GetMapping("/readoutallevents")
     public String readoutAllEvents() {
-
         return repository.getAllFromEventDatabase();
     }
+
+    @GetMapping("/restoredatabase")
+    public String restoreDatabase() {
+        repository.restoreThroughEventDatabase();
+        return "ok";
+    }
+
 }
