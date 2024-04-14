@@ -48,13 +48,14 @@ public class QueryRestController {
 
 
         //handle timeFrame setter
-
+        System.out.println("ROOOOOOOOM " + event.getRoom().getId());
         FreeRoomProjected test = FreeRoomsProjectedDB.getRoomById(event.getRoom().getId());
         Timeframe timeframe = new Timeframe(event.getStartDate(), event.getEndDate());
         System.out.println("JAAAAAAAAAAAAAAA" + test + timeframe);
 
+        // TODO: Probably dies here, because ID from EVENT BUS is not same as ID from WRITE DB, should fix itself with UUID
         test.addTimeFrame(timeframe);
-
+        System.out.println("AM I GETTING THERE YET?");
 
         for (BookingProjected bp : BookingsProjectedDB.getBookings()) {
             System.out.println("TEST: " + bp);
@@ -171,5 +172,21 @@ public class QueryRestController {
         return response.toString();
     }
 
+    @GetMapping("/restoredatabase")
+    public String restoreDatabase() {
+        try {
+            URL url = new URL("http://localhost:8080/restoredatabase");
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection.setRequestMethod("GET");
+
+            int responseCode = connection.getResponseCode();
+            System.out.println("Response Code: " + responseCode);
+
+            connection.disconnect();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return "ok";
+    }
 
 }

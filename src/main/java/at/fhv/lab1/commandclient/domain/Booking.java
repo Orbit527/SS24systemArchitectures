@@ -24,6 +24,14 @@ public class Booking {
         this.endDate = endDate;
     }
 
+    public Booking(int id, Customer customer, Room room, LocalDate startDate, LocalDate endDate) {
+        this.id = id;
+        this.customer = customer;
+        this.room = room;
+        this.startDate = startDate;
+        this.endDate = endDate;
+    }
+
     public int getId() {
         return id;
     }

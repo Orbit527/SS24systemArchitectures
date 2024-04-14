@@ -77,7 +77,6 @@ public class EventRepository {
 
                 if ("CancelBookingEvent".equals(jsonObject.get("event"))) {
                     CancelBookingEvent cancelBookingEvent = new CancelBookingEvent(jsonObject.getInt("id"));
-                    // TODO: should only work once Bookings get Created again
                     eventPublisher.publishEvent(cancelBookingEvent);
                     System.out.println("CancelBookingEvent Triggered");
                 }
@@ -85,7 +84,6 @@ public class EventRepository {
                     String birthdayString = (String)jsonObject.get("birthdate");
                     LocalDate birthday = LocalDate.parse(birthdayString);
                     CreateCustomerEvent createCustomerEvent = new CreateCustomerEvent((String)jsonObject.get("firstname"), (String)jsonObject.get("surname"), (String)jsonObject.get("email"), (String)jsonObject.get("address"), birthday);
-                    System.out.println("FUCKING FINALLY" + createCustomerEvent);
                     eventPublisher.publishEvent(createCustomerEvent);
                 }
                 if ("CreateRoomEvent".equals(jsonObject.get("event"))) {
@@ -102,17 +100,12 @@ public class EventRepository {
                     JSONObject roomJson = jsonObject.getJSONObject("booking").getJSONObject("room");
                     JSONObject bookingJson = jsonObject.getJSONObject("booking");
 
-                    // TODO: Add ids to these (at the moment id destroys everything)
-                    Customer customer = new Customer(customerJson.getString("firstname"), customerJson.getString("surname"), LocalDate.parse(customerJson.getString("birthdate")), customerJson.getString("email"), customerJson.getString("address"));
-                    System.out.println("AH " + customer.toString());
-                    Room room = new Room(roomJson.getInt("roomNr"), roomJson.getInt("floor"), roomJson.getInt("capacity"));
-                    System.out.println("BH " + room.toString());
-                    Booking booking = new Booking(customer, room, LocalDate.parse(bookingJson.getString("startDate")), LocalDate.parse(bookingJson.getString("endDate")));
-                    System.out.println("CH " + booking.toString());
+                    System.out.println("MAKING THEM CLASSES");
+                    Customer customer = new Customer(customerJson.getInt("id"), customerJson.getString("firstname"), customerJson.getString("surname"), LocalDate.parse(customerJson.getString("birthdate")), customerJson.getString("email"), customerJson.getString("address"));
+                    Room room = new Room(roomJson.getInt("id"), roomJson.getInt("roomNr"), roomJson.getInt("floor"), roomJson.getInt("capacity"));
+                    Booking booking = new Booking(bookingJson.getInt("id"), customer, room, LocalDate.parse(bookingJson.getString("startDate")), LocalDate.parse(bookingJson.getString("endDate")));
                     RoomBookedEvent roomBookedEvent = new RoomBookedEvent(booking, customer, room, LocalDate.parse(bookingJson.getString("startDate")), LocalDate.parse(bookingJson.getString("endDate")));
-                    System.out.println("DH " + roomBookedEvent.toString());
-                    // TODO: Figure out why this doesnt work
-                    //eventPublisher.publishEvent(roomBookedEvent);
+                    eventPublisher.publishEvent(roomBookedEvent);
                     System.out.println("RoomBookedEvent Triggered");
                 }
 

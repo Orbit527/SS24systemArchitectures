@@ -19,6 +19,13 @@ public class Room {
         this.capacity = capacity;
     }
 
+    public Room(int id, int roomNr, int floor, int capacity) {
+        this.id = id;
+        this.roomNr = roomNr;
+        this.floor = floor;
+        this.capacity = capacity;
+    }
+
     public int getId() {
         return id;
     }
