@@ -89,7 +89,7 @@ public class CommandClientRestController {
         CreateCustomerCommand command = new CreateCustomerCommand();
         command.setFirstname(customer.getFirstname());
         command.setSurname(customer.getSurname());
-        command.setBirthdate(customer.getBirthdate()); //TODO: Real Date
+        command.setBirthdate(customer.getBirthdate());
         command.setEmail(customer.getEmail());
         command.setAddress(customer.getAddress());
 

@@ -124,7 +124,7 @@ public class CommandHandler {
         return true;
     }
 
-    public String handleCreateRoomCommand(CreateRoomCommand c) throws RoomNotAddableException {
+    public boolean handleCreateRoomCommand(CreateRoomCommand c) throws RoomNotAddableException {
 
         //check if room number already exists
         for (Room room : RoomDB.getRooms()) {
@@ -142,6 +142,6 @@ public class CommandHandler {
 
         System.out.println("CreateCustomerEvent: " + eventPublisher.publishEvent(createRoomEvent));
 
-        return "0";
+        return true;
     }
 }
