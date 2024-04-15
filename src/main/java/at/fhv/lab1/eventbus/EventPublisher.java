@@ -6,13 +6,21 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
 
+import java.util.ArrayList;
+
 @Component
 public class EventPublisher {
 
     // TODO: make a list of WebClients and make functions that call the publish functions for every Webclient
     private final WebClient localApiClient = WebClient.create("http://localhost:8082");
+    private static ArrayList<WebClient>  subscribedClients = new ArrayList<>();
 
-
+    public static void subscribe(String url) {
+        WebClient subscriber = WebClient.create(url);
+        subscribedClients.add(subscriber);
+        System.out.println(subscribedClients.size());
+    }
+    
     public EventPublisher() {
     }
 
