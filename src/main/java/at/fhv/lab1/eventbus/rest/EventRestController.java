@@ -3,9 +3,6 @@ package at.fhv.lab1.eventbus.rest;
 import at.fhv.lab1.eventbus.EventPublisher;
 import at.fhv.lab1.eventbus.EventRepository;
 import at.fhv.lab1.eventbus.events.*;
-import jakarta.servlet.http.HttpServletRequest;
-import org.json.JSONException;
-import org.json.JSONObject;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -73,19 +70,6 @@ public class EventRestController {
     public String restoreDatabase() {
         repository.restoreThroughEventDatabase();
         return "ok";
-    }
-
-    @PostMapping(value = "/subscribe", consumes = "application/json")
-    public boolean subscribe(@RequestBody String url) {
-        try {
-            JSONObject json = new JSONObject(url);
-            String clientUrl = json.getString("url");
-            EventPublisher.subscribe(clientUrl);
-
-        } catch (JSONException e) {
-            throw new RuntimeException(e);
-        }
-        return true;
     }
 
 }

@@ -118,5 +118,4 @@ public class ClientRestController {
         BookingsProjectedDB.removeBookings();
         return "ok";
     }
-
 }

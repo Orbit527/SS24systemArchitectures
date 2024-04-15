@@ -25,6 +25,7 @@ public class EventRepository {
 
     public void processEvent(RoomBookedEvent event) {
         // store events in log/DB
+        // TODO: Change toString in RoomBookedEvent to put out correct JSON
         writeToEventDatabase(event.toString());
         // TODO: notify subscribed read repositories
         System.out.println("Processing Event");
