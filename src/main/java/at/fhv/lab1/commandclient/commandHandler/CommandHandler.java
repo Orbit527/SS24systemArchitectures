@@ -59,7 +59,7 @@ public class CommandHandler {
         for (Booking b : BookingDB.getBookings()) {
             //Booking has to be on the same room
             if (b.getRoom().getId() == r.getRoom().getId()) {
-                if(b.getStartDate().isBefore(r.getEndDate()) && b.getEndDate().isAfter(r.getStartDate())) {
+                if(b.getStartDate().isBefore(r.getEndDate().plusDays(1)) && b.getEndDate().isAfter(r.getStartDate().minusDays(1))) {
                     throw new NotBookableException("There is a booking already in this timeframe!");
                 }
             }

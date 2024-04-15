@@ -39,7 +39,7 @@ public class QueryHandler {
         //TODO: remove last colon
 
         for (BookingProjected b : BookingsProjectedDB.getBookings()) {
-            if(b.getStartDate().isBefore(query.getEndDate()) && b.getEndDate().isAfter(query.getStartDate())) {
+            if(b.getStartDate().isBefore(query.getEndDate().plusDays(1)) && b.getEndDate().isAfter(query.getStartDate().minusDays(1))) {
                 output.append(b.toString());
                 output.append(",");
             }
@@ -95,7 +95,7 @@ public class QueryHandler {
 
     private boolean hasOverlap(ArrayList<Timeframe> timeframes, LocalDate newStartDate, LocalDate newEndDate) {
         for (Timeframe timeframe : timeframes) {
-            if (newStartDate.isBefore(timeframe.getEndDate()) && timeframe.getStartDate().isBefore(newEndDate)) {
+            if (newStartDate.isBefore(timeframe.getEndDate().plusDays(1)) && timeframe.getStartDate().minusDays(1).isBefore(newEndDate)) {
                 return true;
             }
         }
