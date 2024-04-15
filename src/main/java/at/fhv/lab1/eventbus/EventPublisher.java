@@ -20,7 +20,7 @@ public class EventPublisher {
         subscribedClients.add(subscriber);
         System.out.println(subscribedClients.size());
     }
-    
+
     public EventPublisher() {
     }
 

@@ -29,13 +29,8 @@ public class CustomerDB {
         return null;
     }
 
-    public static boolean doesCustomerExist(int id) {
-        for (Customer customer : customers) {
-            if (customer.getId() == id) {
-                return true;
-            }
-        }
-        return false;
+    public static boolean contains(Customer customer) {
+        return customers.contains(customer);
     }
 
     public static void addCustomer(Customer customer) {

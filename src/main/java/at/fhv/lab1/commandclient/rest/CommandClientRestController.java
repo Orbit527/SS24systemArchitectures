@@ -1,6 +1,8 @@
 package at.fhv.lab1.commandclient.rest;
 
 import at.fhv.lab1.commandclient.commandHandler.CommandHandler;
+import at.fhv.lab1.commandclient.exceptions.CustomerNotCreatableException;
+import at.fhv.lab1.commandclient.exceptions.NotBookableException;
 import at.fhv.lab1.commandclient.commands.CancelBookingCommand;
 import at.fhv.lab1.commandclient.commands.CreateCustomerCommand;
 import at.fhv.lab1.commandclient.commands.CreateRoomCommand;
@@ -9,11 +11,12 @@ import at.fhv.lab1.commandclient.database.BookingDB;
 import at.fhv.lab1.commandclient.database.CustomerDB;
 import at.fhv.lab1.commandclient.database.RoomDB;
 import at.fhv.lab1.commandclient.domain.*;
+import at.fhv.lab1.commandclient.exceptions.NotCancelableException;
+import at.fhv.lab1.commandclient.exceptions.RoomNotAddableException;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.awt.print.Book;
 import java.time.LocalDate;
 import java.util.Objects;
 
@@ -46,17 +49,15 @@ public class CommandClientRestController {
         command.setEndDate(booking.getEndDate());
 
         //Send command to CommandHandler
-        String status = commandHandler.handleRoomBookedCommand(command);
-        if (Objects.equals(status, "0")) {
+        try {
+            commandHandler.handleRoomBookedCommand(command);
             BookingDB.addBooking(booking);
             System.out.println(BookingDB.getBookings());
-        } else {
-            System.out.println("Something went wrong trying to create createBooking Event!");
-            System.out.println(status);
-            return status;
+            return "Booking created!";
+        } catch(NotBookableException exception) {
+            System.out.println(exception.getMessage());
+            return exception.getMessage();
         }
-
-        return "Booking created!";
     }
 
     @PostMapping(value = "/cancelBooking", consumes = "application/json")
@@ -68,20 +69,16 @@ public class CommandClientRestController {
         command.setId(cancelBookingRest.getId());
 
         //Send command to CommandHandler
-        String status = commandHandler.handleCancelBookingCommand(command);
-        if (Objects.equals(status, "0")) {
-
+        try {
+            commandHandler.handleCancelBookingCommand(command);
             Booking b = BookingDB.getBookingById(command.getId());
-
             BookingDB.removeBooking(b);
             System.out.println(BookingDB.getBookings());
-        } else {
-            System.out.println("Something went wrong trying to create cancelBooking Event!");
-            System.out.println(status);
-            return status;
+            return "Booking canceled!";
+        } catch (NotCancelableException exception) {
+            System.out.println(exception.getMessage());
+            return exception.getMessage();
         }
-
-        return "Booking canceled!";
     }
 
     @PostMapping(value = "/createCustomer", consumes = "application/json")
@@ -92,20 +89,19 @@ public class CommandClientRestController {
         CreateCustomerCommand command = new CreateCustomerCommand();
         command.setFirstname(customer.getFirstname());
         command.setSurname(customer.getSurname());
-        command.setBirthdate(customer.getBirthdate()); //TODO: Real Date
+        command.setBirthdate(customer.getBirthdate());
         command.setEmail(customer.getEmail());
         command.setAddress(customer.getAddress());
 
         //Send command to CommandHandler
-        String status = commandHandler.handleCreateCustomerCommand(command);
-        if (Objects.equals(status, "0")) {
+        try {
+            commandHandler.handleCreateCustomerCommand(command);
             CustomerDB.addCustomer(customer);
             System.out.println(CustomerDB.getCustomers());
-        } else {
-            System.out.println("Something went wrong trying to create createCustomer Event!");
-            System.out.println(status);
-            return status;
-        };
+        } catch (CustomerNotCreatableException exception) {
+            System.out.println(exception.getMessage());
+            return exception.getMessage();
+        }
 
         return "Customer added!";
     }
@@ -122,15 +118,14 @@ public class CommandClientRestController {
         command.setFloor(room.getFloor());
 
         //Send command to CommandHandler
-        String status = commandHandler.handleCreateRoomCommand(command);
-        if (Objects.equals(status, "0")) {
+        try {
+            commandHandler.handleCreateRoomCommand(command);
             RoomDB.addRoom(room);
             System.out.println(RoomDB.getRooms());
-        } else {
-            System.out.println("Something went wrong trying to create createRoom Event!");
-            System.out.println(status);
-            return status;
-        };
+        } catch (RoomNotAddableException exception) {
+            System.out.println(exception.getMessage());
+            return exception.getMessage();
+        }
 
         return "Room added!";
     }

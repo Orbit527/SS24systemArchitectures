@@ -11,6 +11,10 @@ import at.fhv.lab1.commandclient.database.RoomDB;
 import at.fhv.lab1.commandclient.domain.Booking;
 import at.fhv.lab1.commandclient.domain.Customer;
 import at.fhv.lab1.commandclient.domain.Room;
+import at.fhv.lab1.commandclient.exceptions.CustomerNotCreatableException;
+import at.fhv.lab1.commandclient.exceptions.NotBookableException;
+import at.fhv.lab1.commandclient.exceptions.NotCancelableException;
+import at.fhv.lab1.commandclient.exceptions.RoomNotAddableException;
 import at.fhv.lab1.eventbus.events.CancelBookingEvent;
 import at.fhv.lab1.eventbus.events.CreateCustomerEvent;
 import at.fhv.lab1.eventbus.events.CreateRoomEvent;
@@ -28,26 +32,26 @@ public class CommandHandler {
         eventPublisher = new EventPublisher();
     }
 
-    public String handleRoomBookedCommand(RoomBookedCommand r) {
+    public boolean handleRoomBookedCommand(RoomBookedCommand r) throws NotBookableException {
 
         //check for empty fields
         if (r.getBooking() == null || r.getEndDate() == null || r.getStartDate() == null) {
-            return "Fields cannot be empty!";
+            throw new NotBookableException("Field cannot be empty!");
         }
 
         //check if Customer with that Id exists
         if (r.getCustomer() == null) {
-            return "Customer with that ID does not exist!";
+            throw new NotBookableException("Customer with that ID does not exist!");
         }
 
         //check if Room with that Id exists
         if (r.getRoom() == null) {
-            return "Room with that ID does not exist!";
+            throw new NotBookableException("Room with that ID does not exist!");
         }
 
         //check that endDate is after startDate
         if (r.getEndDate().isBefore(r.getStartDate())) {
-            return "Enddate is before Startdate!";
+            throw new NotBookableException("Enddate is before Startdate!");
         }
 
         //check for overlapping date
@@ -55,74 +59,56 @@ public class CommandHandler {
         for (Booking b : BookingDB.getBookings()) {
             //Booking has to be on the same room
             if (b.getRoom().getId() == r.getRoom().getId()) {
-                if(b.getStartDate().isBefore(r.getEndDate()) && b.getEndDate().isAfter(r.getStartDate())) {
-                    return "There is a booking already in this timeframe!";
+                if(b.getStartDate().isBefore(r.getEndDate().plusDays(1)) && b.getEndDate().isAfter(r.getStartDate().minusDays(1))) {
+                    throw new NotBookableException("There is a booking already in this timeframe!");
                 }
             }
         }
 
-
-        /*
-        List<Customer> customerWithId1 = CustomerDB.getCustomers()
-                .stream()
-                .filter(c -> c.getId() == 1)
-                .collect(Collectors.toList());
-
-        for (Customer c : customerWithId1 ) {
-            System.out.println("CUSTOMER WITH ID 1: " + c);
-        }
-        */
-
-
         RoomBookedEvent roomBookedEvent = new RoomBookedEvent();
-
         roomBookedEvent.setCustomer(r.getCustomer());
         roomBookedEvent.setRoom(r.getRoom());
-        roomBookedEvent.setBooking(r.getBooking()); //TODO: add real parameters
+        roomBookedEvent.setBooking(r.getBooking());
         roomBookedEvent.setStartDate(r.getStartDate());
         roomBookedEvent.setEndDate(r.getEndDate());
 
         System.out.println("BookRoomEvent: " + eventPublisher.publishEvent(roomBookedEvent));
 
-        return "0";
+        return true;
     }
 
-    public String handleCancelBookingCommand(CancelBookingCommand c) {
-
-        //TODO: check that booking with that Id exists
+    public boolean handleCancelBookingCommand(CancelBookingCommand c) throws NotCancelableException {
 
         if (BookingDB.getBookingById(c.getId()) == null) {
-            return "Booking with that id does not exist!";
+            throw new NotCancelableException("Booking with that id does not exist!");
         }
 
         CancelBookingEvent cancelBookingEvent = new CancelBookingEvent();
-
         cancelBookingEvent.setId(c.getId());
-
 
         System.out.println("BookRoomEvent: " + eventPublisher.publishEvent(cancelBookingEvent));
 
-        return "0";
+        return true;
     }
 
-    public String handleCreateCustomerCommand(CreateCustomerCommand c) {
+    public boolean handleCreateCustomerCommand(CreateCustomerCommand c) throws CustomerNotCreatableException {
 
         //check for empty fields
         if (Objects.equals(c.getFirstname(), "") || Objects.equals(c.getSurname(), "") || Objects.equals(c.getEmail(), "") || Objects.equals(c.getAddress(), "")) {
-            return "Field cannot be empty!";
+            throw new CustomerNotCreatableException("Field cannot be empty!");
         }
 
         //Customer Email exists validation
         for (Customer cust : CustomerDB.getCustomers()) {
             if (Objects.equals(cust.getEmail(), c.getEmail())) {
-                return "Customer with that Email already exists!";
+                throw new CustomerNotCreatableException("Customer with that Email already exists!");
             }
         }
 
         //check that customer is 18 years old
         Period ageDifference = Period.between(c.getBirthdate(), LocalDate.now());
         if (ageDifference.getYears() < 18) {
-            return "Customer is not at least 18 years old!";
+            throw new CustomerNotCreatableException("Customer is not at least 18 years old!");
         }
 
         CreateCustomerEvent createCustomerEvent = new CreateCustomerEvent();
@@ -135,15 +121,15 @@ public class CommandHandler {
 
         System.out.println("CreateCustomerEvent: " + eventPublisher.publishEvent(createCustomerEvent));
 
-        return "0";
+        return true;
     }
 
-    public String handleCreateRoomCommand(CreateRoomCommand c) {
+    public boolean handleCreateRoomCommand(CreateRoomCommand c) throws RoomNotAddableException {
 
         //check if room number already exists
         for (Room room : RoomDB.getRooms()) {
             if (Objects.equals(room.getRoomNr(), c.getRoomNr())) {
-                return "Room with that number already exists!";
+                throw new RoomNotAddableException("Room with that number already exists!");
             }
         }
 
@@ -156,7 +142,6 @@ public class CommandHandler {
 
         System.out.println("CreateCustomerEvent: " + eventPublisher.publishEvent(createRoomEvent));
 
-        return "0";
+        return true;
     }
-
 }
