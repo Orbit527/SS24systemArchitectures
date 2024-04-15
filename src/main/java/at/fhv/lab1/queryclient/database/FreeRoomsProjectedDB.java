@@ -34,5 +34,7 @@ public class FreeRoomsProjectedDB {
         freeRooms.remove(room);
     }
 
-
+    public static void removeFreeRooms() {
+        freeRooms.clear();
+    }
 }

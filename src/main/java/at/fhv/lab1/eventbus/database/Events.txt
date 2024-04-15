@@ -8,3 +8,23 @@
 {"event":"CreateCustomerEvent","firstname":"Hans","surname":"Franz","email":"hans.franz@mail.com","address":"Bach 2","birthdate":"1924-04-17"}
 {"event":"RoomBookedEvent","booking":{"id":0,"customer":{"id":0,"firstname":"Max","surname":"Mustermann","email":"max.mustermann@max.com","address":"Straße 123","birthdate":"2001-11-12"},"room":{"id":1,"roomNr":2,"floor":0,"capacity":2},"startDate":"2024-04-10","endDate":"2024-04-15"}}
 {"event":"RoomBookedEvent","booking":{"id":1,"customer":{"id":1,"firstname":"Eva","surname":"Müller","email":"eva.mueller@mail.com","address":"Gasse 456","birthdate":"1988-01-06"},"room":{"id":3,"roomNr":12,"floor":1,"capacity":2},"startDate":"2024-04-08","endDate":"2024-04-17"}}
+{"event":"CreateRoomEvent","roomId":0,"roomNr":1,"floor":0,"capacity":3}
+{"event":"CreateRoomEvent","roomId":1,"roomNr":2,"floor":0,"capacity":2}
+{"event":"CreateRoomEvent","roomId":2,"roomNr":11,"floor":1,"capacity":4}
+{"event":"CreateRoomEvent","roomId":3,"roomNr":12,"floor":1,"capacity":2}
+{"event":"CreateRoomEvent","roomId":4,"roomNr":21,"floor":2,"capacity":2}
+{"event":"CreateCustomerEvent","firstname":"Max","surname":"Mustermann","email":"max.mustermann@max.com","address":"Straße 123","birthdate":"2001-11-12"}
+{"event":"CreateCustomerEvent","firstname":"Eva","surname":"Müller","email":"eva.mueller@mail.com","address":"Gasse 456","birthdate":"1988-01-06"}
+{"event":"CreateCustomerEvent","firstname":"Hans","surname":"Franz","email":"hans.franz@mail.com","address":"Bach 2","birthdate":"1924-04-17"}
+{"event":"RoomBookedEvent","booking":{"id":0,"customer":{"id":0,"firstname":"Max","surname":"Mustermann","email":"max.mustermann@max.com","address":"Straße 123","birthdate":"2001-11-12"},"room":{"id":1,"roomNr":2,"floor":0,"capacity":2},"startDate":"2024-04-10","endDate":"2024-04-15"}}
+{"event":"RoomBookedEvent","booking":{"id":1,"customer":{"id":1,"firstname":"Eva","surname":"Müller","email":"eva.mueller@mail.com","address":"Gasse 456","birthdate":"1988-01-06"},"room":{"id":3,"roomNr":12,"floor":1,"capacity":2},"startDate":"2024-04-08","endDate":"2024-04-17"}}
+{"event":"CreateRoomEvent","roomId":0,"roomNr":1,"floor":0,"capacity":3}
+{"event":"CreateRoomEvent","roomId":1,"roomNr":2,"floor":0,"capacity":2}
+{"event":"CreateRoomEvent","roomId":2,"roomNr":11,"floor":1,"capacity":4}
+{"event":"CreateRoomEvent","roomId":3,"roomNr":12,"floor":1,"capacity":2}
+{"event":"CreateRoomEvent","roomId":4,"roomNr":21,"floor":2,"capacity":2}
+{"event":"CreateCustomerEvent","firstname":"Max","surname":"Mustermann","email":"max.mustermann@max.com","address":"Straße 123","birthdate":"2001-11-12"}
+{"event":"CreateCustomerEvent","firstname":"Eva","surname":"Müller","email":"eva.mueller@mail.com","address":"Gasse 456","birthdate":"1988-01-06"}
+{"event":"CreateCustomerEvent","firstname":"Hans","surname":"Franz","email":"hans.franz@mail.com","address":"Bach 2","birthdate":"1924-04-17"}
+{"event":"RoomBookedEvent","booking":{"id":0,"customer":{"id":0,"firstname":"Max","surname":"Mustermann","email":"max.mustermann@max.com","address":"Straße 123","birthdate":"2001-11-12"},"room":{"id":1,"roomNr":2,"floor":0,"capacity":2},"startDate":"2024-04-10","endDate":"2024-04-15"}}
+{"event":"RoomBookedEvent","booking":{"id":1,"customer":{"id":1,"firstname":"Eva","surname":"Müller","email":"eva.mueller@mail.com","address":"Gasse 456","birthdate":"1988-01-06"},"room":{"id":3,"roomNr":12,"floor":1,"capacity":2},"startDate":"2024-04-08","endDate":"2024-04-17"}}

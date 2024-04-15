@@ -34,4 +34,7 @@ public class BookingsProjectedDB {
         bookings.remove(booking);
     }
 
+    public static void removeBookings() {
+        bookings.clear();
+    }
 }

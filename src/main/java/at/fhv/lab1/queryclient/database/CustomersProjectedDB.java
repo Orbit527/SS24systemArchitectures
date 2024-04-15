@@ -55,4 +55,7 @@ public class CustomersProjectedDB {
         customers.remove(customer);
     }
 
+    public static void clearCustomers() {
+        customers.clear();
+    }
 }

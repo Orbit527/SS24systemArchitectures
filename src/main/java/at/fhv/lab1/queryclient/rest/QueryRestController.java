@@ -143,50 +143,6 @@ public class QueryRestController {
         return true;
     }
 
-    @GetMapping("/readoutallevents")
-    public String readoutAllEvents() {
-        String url = "http://localhost:8080/readoutallevents";
-        StringBuilder response = new StringBuilder();
-        try {
-            HttpURLConnection connection = (HttpURLConnection) new URL(url).openConnection();
-            connection.setRequestMethod("GET");
 
-            int responseCode = connection.getResponseCode();
-            if (responseCode == HttpURLConnection.HTTP_OK) {
-                BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-                String inputLine;
-
-                while ((inputLine = in.readLine()) != null) {
-                    response.append(inputLine);
-                }
-                in.close();
-
-                System.out.println("Response: " + response.toString());
-            } else {
-                System.out.println("GET request failed with response code: " + responseCode);
-            }
-        } catch (IOException e) {
-            System.out.println("An error occurred while sending the GET request: " + e.getMessage());
-            e.printStackTrace();
-        }
-        return response.toString();
-    }
-
-    @GetMapping("/restoredatabase")
-    public String restoreDatabase() {
-        try {
-            URL url = new URL("http://localhost:8080/restoredatabase");
-            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-            connection.setRequestMethod("GET");
-
-            int responseCode = connection.getResponseCode();
-            System.out.println("Response Code: " + responseCode);
-
-            connection.disconnect();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return "ok";
-    }
 
 }
