@@ -19,7 +19,6 @@ public class EventRestController {
 
     @PostMapping(value = "/event", consumes = "application/json")
     public boolean addEvent(@RequestBody Event event) {
-        // TODO: process event in repository
         repository.processEvent(event);
         System.out.println("Event received: " + event);
         return true;
@@ -27,7 +26,6 @@ public class EventRestController {
 
     @PostMapping(value = "/roombookedevent", consumes = "application/json")
     public boolean addRoomBookedEvent(@RequestBody RoomBookedEvent event) {
-        // TODO: process event in repository
         repository.processEvent(event);
         System.out.println("Event received: " + event);
         publisher.publishEvent(event);
@@ -36,7 +34,6 @@ public class EventRestController {
 
     @PostMapping(value = "/bookingcanceledevent", consumes = "application/json")
     public boolean bookingCanceledEvent(@RequestBody CancelBookingEvent event) {
-        // TODO: process event in repository
         repository.processEvent(event);
         System.out.println("Event received: " + event);
         publisher.publishEvent(event);
@@ -45,7 +42,6 @@ public class EventRestController {
 
     @PostMapping(value = "/customercreateevent", consumes = "application/json")
     public boolean customerCreatedEvent(@RequestBody CreateCustomerEvent event) {
-        // TODO: process event in repository
         repository.processEvent(event);
         System.out.println("Event received: " + event);
         publisher.publishEvent(event);
@@ -54,7 +50,6 @@ public class EventRestController {
 
     @PostMapping(value = "/roomcreateevent", consumes = "application/json")
     public boolean roomCreatedEvent(@RequestBody CreateRoomEvent event) {
-        // TODO: process event in repository
         repository.processEvent(event);
         System.out.println("Event received: " + event);
         publisher.publishEvent(event);
@@ -71,5 +66,4 @@ public class EventRestController {
         repository.restoreThroughEventDatabase();
         return "ok";
     }
-
 }

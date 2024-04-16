@@ -74,5 +74,4 @@ public class EventPublisher {
                 .bodyToMono(Boolean.class)
                 .block();
     }
-
 }

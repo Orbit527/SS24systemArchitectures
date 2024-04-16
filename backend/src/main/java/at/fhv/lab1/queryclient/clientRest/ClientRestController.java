@@ -77,11 +77,14 @@ public class ClientRestController {
             if (responseCode == HttpURLConnection.HTTP_OK) {
                 BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
                 String inputLine;
+                response.append("{\"events\": [");
 
                 while ((inputLine = in.readLine()) != null) {
                     response.append(inputLine);
+                    response.append(",");
                 }
                 in.close();
+                response.append("]}");
 
                 System.out.println("Response: " + response.toString());
             } else {

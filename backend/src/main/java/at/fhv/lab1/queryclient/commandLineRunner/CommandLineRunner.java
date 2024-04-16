@@ -48,7 +48,6 @@ public class CommandLineRunner implements org.springframework.boot.CommandLineRu
                 getFreeRoomsRest.setPersonCount(Integer.parseInt(personCount));
 
                 c.getFreeRooms(getFreeRoomsRest);
-
             } else if (line.startsWith("getCustomers")) {
                 String firstname = line.split(" ")[1];
                 String surname = line.split(" ")[2];
@@ -59,8 +58,6 @@ public class CommandLineRunner implements org.springframework.boot.CommandLineRu
                 getCustomersRest.setSurname(surname);
 
                 c.getCustomers(getCustomersRest);
-
-
             } else if (line.startsWith("readOutAllEvents")) {
                 c.readoutAllEvents();
             } else if (line.startsWith("restoreDatabase")) {
@@ -68,8 +65,6 @@ public class CommandLineRunner implements org.springframework.boot.CommandLineRu
             } else if (line.startsWith("clearDatabase")) {
                 c.clearDatabase();
             }
-
-            System.out.println(line);
         }
     }
 }

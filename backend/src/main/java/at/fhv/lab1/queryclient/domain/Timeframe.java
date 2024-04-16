@@ -13,8 +13,6 @@ public class Timeframe {
         this.endDate = endDate;
     }
 
-
-
     public LocalDate getStartDate() {
         return startDate;
     }
@@ -33,9 +31,9 @@ public class Timeframe {
 
     @Override
     public String toString() {
-        return "Timeframe{" +
-                "startDate=" + startDate +
-                ", endDate=" + endDate +
+        return "\"timeframe\": {" +
+                "\"startDate\": \"" + startDate + "\"" +
+                ", \"endDate\": \"" + endDate + "\"" +
                 '}';
     }
 }

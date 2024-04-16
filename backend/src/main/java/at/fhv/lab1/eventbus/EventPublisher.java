@@ -9,9 +9,7 @@ import reactor.core.publisher.Mono;
 @Component
 public class EventPublisher {
 
-    // TODO: make a list of WebClients and make functions that call the publish functions for every Webclient
     private final WebClient localApiClient = WebClient.create("http://localhost:8082");
-
 
     public EventPublisher() {
     }
@@ -75,7 +73,4 @@ public class EventPublisher {
                 .bodyToMono(Boolean.class)
                 .block();
     }
-
-
-
 }

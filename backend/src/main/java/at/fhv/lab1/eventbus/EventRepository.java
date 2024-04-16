@@ -19,36 +19,36 @@ public class EventRepository {
     public void processEvent(Event event) {
         // store events in log/DB
         writeToEventDatabase(event.toString());
-        // TODO: notify subscribed read repositories
+
         System.out.println("Processing Event");
     }
 
     public void processEvent(RoomBookedEvent event) {
         // store events in log/DB
-        // TODO: Change toString in RoomBookedEvent to put out correct JSON
+
         writeToEventDatabase(event.toString());
-        // TODO: notify subscribed read repositories
+
         System.out.println("Processing Event");
     }
 
     public void processEvent(CancelBookingEvent event) {
         // store events in log/DB
         writeToEventDatabase(event.toString());
-        // TODO: notify subscribed read repositories
+
         System.out.println("Processing Event");
     }
 
     public void processEvent(CreateCustomerEvent event) {
         // store events in log/DB
         writeToEventDatabase(event.toString());
-        // TODO: notify subscribed read repositories
+
         System.out.println("Processing Event");
     }
 
     public void processEvent(CreateRoomEvent event) {
         // store events in log/DB
         writeToEventDatabase(event.toString());
-        // TODO: notify subscribed read repositories
+
         System.out.println("Processing Event");
     }
 
@@ -92,7 +92,6 @@ public class EventRepository {
                     System.out.println("CreateRoomEvent Triggered");
                 }
                 if ("Event".equals(jsonObject.get("event"))) {
-                    //TODO: Is this even ever called?
                     System.out.println("Event Triggered");
                 }
                 if ("RoomBookedEvent".equals(jsonObject.get("event"))) {
@@ -100,7 +99,6 @@ public class EventRepository {
                     JSONObject roomJson = jsonObject.getJSONObject("booking").getJSONObject("room");
                     JSONObject bookingJson = jsonObject.getJSONObject("booking");
 
-                    System.out.println("MAKING THEM CLASSES");
                     Customer customer = new Customer(customerJson.getInt("id"), customerJson.getString("firstname"), customerJson.getString("surname"), LocalDate.parse(customerJson.getString("birthdate")), customerJson.getString("email"), customerJson.getString("address"));
                     Room room = new Room(roomJson.getInt("id"), roomJson.getInt("roomNr"), roomJson.getInt("floor"), roomJson.getInt("capacity"));
                     Booking booking = new Booking(bookingJson.getInt("id"), customer, room, LocalDate.parse(bookingJson.getString("startDate")), LocalDate.parse(bookingJson.getString("endDate")));

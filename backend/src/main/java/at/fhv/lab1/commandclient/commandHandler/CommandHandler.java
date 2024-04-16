@@ -55,7 +55,6 @@ public class CommandHandler {
         }
 
         //check for overlapping date
-        //TODO: check for single day booking
         for (Booking b : BookingDB.getBookings()) {
             //Booking has to be on the same room
             if (b.getRoom().getId() == r.getRoom().getId()) {

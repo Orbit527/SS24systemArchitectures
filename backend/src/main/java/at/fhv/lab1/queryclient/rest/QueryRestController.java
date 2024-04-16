@@ -46,34 +46,19 @@ public class QueryRestController {
 
         BookingsProjectedDB.addBooking(bookingProjected);
 
-
         //handle timeFrame setter
-        System.out.println("ROOOOOOOOM " + event.getRoom().getId());
         FreeRoomProjected test = FreeRoomsProjectedDB.getRoomById(event.getRoom().getId());
         Timeframe timeframe = new Timeframe(event.getStartDate(), event.getEndDate());
-        System.out.println("JAAAAAAAAAAAAAAA" + test + timeframe);
 
-        // TODO: Probably dies here, because ID from EVENT BUS is not same as ID from WRITE DB, should fix itself with UUID
         test.addTimeFrame(timeframe);
-        System.out.println("AM I GETTING THERE YET?");
-
-        for (BookingProjected bp : BookingsProjectedDB.getBookings()) {
-            System.out.println("TEST: " + bp);
-        }
-
-
 
         return true;
     }
 
     @PostMapping(value = "/eventCancelBooking", consumes = "application/json")
     public boolean cancelBookingEvent(@RequestBody CancelBookingEvent event) {
-        // TODO: process event through projection
 
         BookingProjected bookingProjected = BookingsProjectedDB.getBookingById(event.getId());
-
-        System.out.println("REMOVE BOOKING TEST: " + bookingProjected);
-
 
         //remove from projected Bookings DB
         BookingsProjectedDB.removeBooking(bookingProjected);
@@ -88,11 +73,9 @@ public class QueryRestController {
         return true;
     }
 
-
     @PostMapping(value = "/eventCustomerAdded", consumes = "application/json")
     public boolean addCustomerEvent(@RequestBody CreateCustomerEvent event) {
         System.out.println("Event received: " + event);
-
 
         CustomerProjected customerProjected = new CustomerProjected();
 
@@ -104,25 +87,11 @@ public class QueryRestController {
 
         CustomersProjectedDB.addCustomer(customerProjected);
 
-        //System.out.println("PROJECTED: " + customersProjected);
-
-
-        for (CustomerProjected bp : CustomersProjectedDB.getCustomers()) {
-            System.out.println("TEST: " + bp);
-        }
-
-
-
-
-
         return true;
     }
 
-
-
     @PostMapping(value = "/roomcreateevent", consumes = "application/json")
     public boolean createRoomEvent(@RequestBody CreateRoomEvent event) {
-        // TODO: process event through projection
 
         FreeRoomProjected freeRoomProjected = new FreeRoomProjected();
 
@@ -133,16 +102,8 @@ public class QueryRestController {
 
         FreeRoomsProjectedDB.addFreeRoom(freeRoomProjected);
 
-        for(FreeRoomProjected frp : FreeRoomsProjectedDB.getFreeRooms()) {
-            System.out.println("FREE ROOMS DB: " + frp);
-        }
-
-
         System.out.println("Event received: " + event);
 
         return true;
     }
-
-
-
 }

@@ -43,7 +43,6 @@ public class CommandLineRunner implements org.springframework.boot.CommandLineRu
                 cancelBookingRest.setId(Integer.parseInt(id));
 
                 c.cancelBooking(cancelBookingRest);
-
             } else if (line.startsWith("createCustomer")) {
                 String firstname = line.split(" ")[1];
                 String surname = line.split(" ")[2];
@@ -59,7 +58,6 @@ public class CommandLineRunner implements org.springframework.boot.CommandLineRu
                 customer.setAddress(address);
 
                 c.createCustomer(customer);
-
             } else if (line.startsWith("createRoom")) {
                 String roomNr = line.split(" ")[1];
                 String floor = line.split(" ")[2];
@@ -72,8 +70,6 @@ public class CommandLineRunner implements org.springframework.boot.CommandLineRu
 
                 c.addRoom(room);
             }
-
-            System.out.println(line);
         }
     }
 }

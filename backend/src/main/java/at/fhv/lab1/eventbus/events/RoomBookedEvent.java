@@ -89,6 +89,4 @@ public class RoomBookedEvent {
                 "\"endDate\":\"" + endDate + "\"" +
                 "}}";
     }
-
-
 }
