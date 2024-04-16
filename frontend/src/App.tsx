@@ -1,3 +1,11 @@
+import Query from "./Query";
+import Command from "./Command";
+
 export default function App() {
-  return <p>React is up and running!</p>;
+    return (
+        <div>
+            <Command></Command>
+            <Query></Query>
+        </div>
+    );
 }

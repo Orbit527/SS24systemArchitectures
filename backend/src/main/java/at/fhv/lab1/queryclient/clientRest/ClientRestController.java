@@ -7,10 +7,7 @@ import at.fhv.lab1.queryclient.queries.GetBookingsQuery;
 import at.fhv.lab1.queryclient.queries.GetCustomersQuery;
 import at.fhv.lab1.queryclient.queries.GetFreeRoomsQuery;
 import at.fhv.lab1.queryclient.queries.QueryHandler;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -20,6 +17,7 @@ import java.net.URL;
 
 
 @RestController
+@CrossOrigin(origins = "*", allowedHeaders = "*", methods = {RequestMethod.GET, RequestMethod.POST})
 public class ClientRestController {
 
     private QueryHandler queryHandler;

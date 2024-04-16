@@ -13,14 +13,13 @@ import at.fhv.lab1.commandclient.database.RoomDB;
 import at.fhv.lab1.commandclient.domain.*;
 import at.fhv.lab1.commandclient.exceptions.NotCancelableException;
 import at.fhv.lab1.commandclient.exceptions.RoomNotAddableException;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.util.Objects;
 
 @RestController
+@CrossOrigin(origins = "*", allowedHeaders = "*", methods = {RequestMethod.GET, RequestMethod.POST})
 public class CommandClientRestController {
 
     private final CommandHandler commandHandler;
