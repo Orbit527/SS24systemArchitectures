@@ -12,14 +12,6 @@ public class EventPublisher {
     // TODO: make a list of WebClients and make functions that call the publish functions for every Webclient
     private final WebClient localApiClient = WebClient.create("http://localhost:8082");
 
-<<<<<<< HEAD
-    public static void subscribe(String url) {
-        WebClient subscriber = WebClient.create(url);
-        subscribedClients.add(subscriber);
-        System.out.println(subscribedClients.size());
-    }
-=======
->>>>>>> parent of 8c3fcf3 (Subscribing Method and REST Endpoint added)
 
     public EventPublisher() {
     }
