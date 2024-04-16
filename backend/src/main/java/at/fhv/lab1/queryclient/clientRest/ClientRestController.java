@@ -41,7 +41,7 @@ public class ClientRestController {
     }
 
     @PostMapping(value = "/getFreeRooms")
-    public String getBookings(@RequestBody GetFreeRoomsRest getFreeRoomsRest) {
+    public String getFreeRooms(@RequestBody GetFreeRoomsRest getFreeRoomsRest) {
 
         GetFreeRoomsQuery getFreeRoomsQuery = new GetFreeRoomsQuery();
 
@@ -54,7 +54,7 @@ public class ClientRestController {
     }
 
     @PostMapping(value = "/getCustomers")
-    public String getBookings(@RequestBody GetCustomersRest getCustomersRest) {
+    public String getCustomers(@RequestBody GetCustomersRest getCustomersRest) {
 
         GetCustomersQuery getCustomersQuery = new GetCustomersQuery();
 
@@ -65,7 +65,7 @@ public class ClientRestController {
 
     }
 
-    @GetMapping("/readoutallevents")
+    @GetMapping("/readOutAllEvents")
     public String readoutAllEvents() {
         String url = "http://localhost:8080/readoutallevents";
         StringBuilder response = new StringBuilder();
@@ -94,7 +94,7 @@ public class ClientRestController {
         return response.toString();
     }
 
-    @GetMapping("/restoredatabase")
+    @GetMapping("/restoreDatabase")
     public String restoreDatabase() {
         try {
             URL url = new URL("http://localhost:8080/restoredatabase");
@@ -111,7 +111,7 @@ public class ClientRestController {
         return "ok";
     }
 
-    @GetMapping("/cleardatabase")
+    @GetMapping("/clearDatabase")
     public String clearDatabase() {
         CustomersProjectedDB.clearCustomers();
         FreeRoomsProjectedDB.removeFreeRooms();

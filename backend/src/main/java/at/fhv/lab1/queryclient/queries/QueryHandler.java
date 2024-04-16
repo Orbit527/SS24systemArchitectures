@@ -45,9 +45,10 @@ public class QueryHandler {
             }
         }
 
-
-
         output.append("]}");
+
+        //print out for CLR
+        System.out.println(output);
 
         return output.toString();
 
@@ -88,6 +89,8 @@ public class QueryHandler {
         }
 
         output.append("]}");
+        //print out for CLR
+        System.out.println(output);
 
         return output.toString();
 
@@ -141,6 +144,8 @@ public class QueryHandler {
         }
 
         output.append("]}");
+        //print out for CLR
+        System.out.println(output);
 
         return output.toString();
     }
