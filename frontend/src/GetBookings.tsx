@@ -22,6 +22,7 @@ export default function GetBookings({postMappings}) {
 
     return (
         <div>
+            <h2>Get Bookings</h2>
             <div>
                 <label htmlFor="startDate">Start Date:</label>
                 <input
@@ -42,7 +43,7 @@ export default function GetBookings({postMappings}) {
                     required
                 />
             </div>
-            <button onClick={handleSubmit}>Get Bookings</button>
+            <button className="submit-button" onClick={handleSubmit}>Get Bookings</button>
         </div>
     );
 }

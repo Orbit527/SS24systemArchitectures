@@ -1,50 +1,30 @@
-import React, { useState } from 'react';
 import CreateBooking from "./CreateBooking";
 import CancelBooking from "./CancelBooking";
 import CreateCustomer from "./CreateCustomer";
 import CreateRoom from "./CreateRoom";
+import React, {useState} from "react";
 
-export default function Command() {
-    const [returnValue, setReturnValue] = useState("");
-
-    const postMappings = (url, requestBody) => {
-        fetch(url, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(requestBody)
-        })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.text();
-            })
-            .then(returnValue => {
-                setReturnValueFormatted(returnValue);
-            })
-            .catch(error => {
-                console.error('Error fetching data:', error);
-            });
-    };
-
-    const setReturnValueFormatted = (returnValue) => {
-        // Add line breaks after every {
-        returnValue = returnValue.replace(/{/g, '{\n');
-        setReturnValue(returnValue);
-    };
+export default function Command({returnValue, setReturnValue, postMappings}) {
+    const [tab, setTab] = useState("CreateBooking");
 
     return (
         <div>
-            <CreateBooking postMappings={postMappings}/>
-            <CancelBooking postMappings={postMappings}/>
-            <CreateCustomer postMappings={postMappings}/>
-            <CreateRoom postMappings={postMappings}/>
+            <div className="tab-container">
+                <button className={`tab-button ${tab === "CreateBooking" ? "active-tab" : ""}`} onClick={() => { setTab("CreateBooking"); setReturnValue("") }}>Create Booking</button>
+                <button className={`tab-button ${tab === "CancelBooking" ? "active-tab" : ""}`} onClick={() => { setTab("CancelBooking"); setReturnValue("") }}>Cancel Booking</button>
+                <button className={`tab-button ${tab === "CreateCustomer" ? "active-tab" : ""}`} onClick={() => { setTab("CreateCustomer"); setReturnValue("") }}>Create Customer</button>
+                <button className={`tab-button ${tab === "CreateRoom" ? "active-tab" : ""}`} onClick={() => { setTab("CreateRoom"); setReturnValue("") }}>Create Room</button>
+            </div>
 
+            <div className="Form">
+                {tab === "CreateBooking" && <CreateBooking postMappings={postMappings}/>}
+                {tab === "CancelBooking" && <CancelBooking postMappings={postMappings}/>}
+                {tab === "CreateCustomer" && <CreateCustomer postMappings={postMappings}/>}
+                {tab === "CreateRoom" && <CreateRoom postMappings={postMappings}/>}
 
-            <pre>{returnValue}</pre>
-            <hr/>
+                <h3>Return Value:</h3>
+                <pre>{returnValue}</pre>
+            </div>
         </div>
     );
 }

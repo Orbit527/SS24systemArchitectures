@@ -27,6 +27,7 @@ export default function GetFreeRooms({ postMappings }) {
 
     return (
         <div>
+            <h2>Get Free Rooms</h2>
             <div>
                 <label htmlFor="startDate">Start Date:</label>
                 <input
@@ -57,7 +58,7 @@ export default function GetFreeRooms({ postMappings }) {
                     required
                 />
             </div>
-            <button onClick={handleSubmit}>Get Free Rooms</button>
+            <button className="submit-button" onClick={handleSubmit}>Get Free Rooms</button>
         </div>
     );
 }

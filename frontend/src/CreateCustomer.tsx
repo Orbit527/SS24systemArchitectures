@@ -46,6 +46,7 @@ export default function CreateCustomer({ postMappings }) {
 
     return (
         <div>
+            <h2>Create Customer</h2>
             <div>
                 <label htmlFor="firstname">First Name:</label>
                 <input
@@ -96,7 +97,7 @@ export default function CreateCustomer({ postMappings }) {
                     required
                 />
             </div>
-            <button onClick={handleSubmit}>Create Customer</button>
+            <button className="submit-button" onClick={handleSubmit}>Create Customer</button>
         </div>
     );
 }

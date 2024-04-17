@@ -18,6 +18,7 @@ export default function GetCustomers({ postMappings }) {
 
     return (
         <div>
+            <h2>Get Customers</h2>
             <div>
                 <label htmlFor="firstname">First Name:</label>
                 <input
@@ -36,7 +37,7 @@ export default function GetCustomers({ postMappings }) {
                     onChange={handleSurnameChange}
                 />
             </div>
-            <button onClick={handleSubmit}>Get Customers</button>
+            <button className="submit-button" onClick={handleSubmit}>Get Customers</button>
         </div>
     );
 }

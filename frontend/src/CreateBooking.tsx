@@ -38,6 +38,7 @@ export default function CreateBooking({ postMappings }) {
 
     return (
         <div>
+            <h2>Create Booking</h2>
             <div>
                 <label htmlFor="customerID">Customer ID:</label>
                 <input
@@ -78,7 +79,7 @@ export default function CreateBooking({ postMappings }) {
                     required
                 />
             </div>
-            <button onClick={handleSubmit}>Create Booking</button>
+            <button className="submit-button" onClick={handleSubmit}>Create Booking</button>
         </div>
     );
 }

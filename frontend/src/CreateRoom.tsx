@@ -36,6 +36,7 @@ export default function CreateRoom({ postMappings }) {
 
     return (
         <div>
+            <h2>Create Room</h2>
             <div>
                 <label htmlFor="roomNr">Room Number:</label>
                 <input
@@ -66,7 +67,7 @@ export default function CreateRoom({ postMappings }) {
                     required
                 />
             </div>
-            <button onClick={handleSubmit}>Create Room</button>
+            <button className="submit-button" onClick={handleSubmit}>Create Room</button>
         </div>
     );
 }

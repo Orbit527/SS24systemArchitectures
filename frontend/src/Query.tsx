@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
 import GetBookings from "./GetBookings";
 import GetCustomers from "./GetCustomers";
 import GetFreeRooms from "./GetFreeRooms";
+import React, {useState} from "react";
+import QueryDatabase from "./QueryDatabase";
 
-export default function Query() {
-    const [returnValue, setReturnValue] = useState("");
+export default function Query({returnValue, setReturnValue, setReturnValueFormatted, postMappings}) {
+    const [tab, setTab] = useState("GetBookings");
 
     const getMappings = (url: string) => {
         fetch(url)
@@ -19,45 +20,24 @@ export default function Query() {
             });
     };
 
-    const postMappings = (url, requestBody) => {
-        fetch(url, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(requestBody)
-        })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.text();
-            })
-            .then(returnValue => {
-                setReturnValueFormatted(returnValue);
-            })
-            .catch(error => {
-                console.error('Error fetching data:', error);
-            });
-    };
-
-    const setReturnValueFormatted = (returnValue) => {
-        // Add line breaks after every {
-        returnValue = returnValue.replace(/{/g, '{\n');
-        setReturnValue(returnValue);
-    };
-
     return (
         <div>
-            <button onClick={() => getMappings('http://localhost:8082/readOutAllEvents')}>Read Out All Events</button>
-            <button onClick={() => getMappings('http://localhost:8082/restoreDatabase')}>Restore Database</button>
-            <button onClick={() => getMappings('http://localhost:8082/clearDatabase')}>Clear Database</button>
+            <div className="tab-container">
+                <button className={`tab-button ${tab === "GetBookings" ? "active-tab" : ""}`} onClick={() => {setTab("GetBookings"); setReturnValue("")}}>Get Booking</button>
+                <button className={`tab-button ${tab === "GetCustomers" ? "active-tab" : ""}`} onClick={() => {setTab("GetCustomers"); setReturnValue("")}}>Get Customers</button>
+                <button className={`tab-button ${tab === "GetFreeRooms" ? "active-tab" : ""}`} onClick={() => {setTab("GetFreeRooms"); setReturnValue("")}}>Get Free Rooms</button>
+                <button className={`tab-button ${tab === "QueryDatabase" ? "active-tab" : ""}`} onClick={() => {setTab("QueryDatabase"); setReturnValue("")}}>Database</button>
+            </div>
 
-            <GetBookings postMappings={postMappings}/>
-            <GetCustomers postMappings={postMappings}/>
-            <GetFreeRooms postMappings={postMappings}/>
+            <div className="Form">
+                {tab === "GetBookings" && <GetBookings postMappings={postMappings}/>}
+                {tab === "GetCustomers" && <GetCustomers postMappings={postMappings}/>}
+                {tab === "GetFreeRooms" && <GetFreeRooms postMappings={postMappings}/>}
+                {tab === "QueryDatabase" && <QueryDatabase getMappings={getMappings}/>}
 
-            <pre>{returnValue}</pre>
+                <h3>Return Value:</h3>
+                <pre>{returnValue}</pre>
+            </div>
         </div>
     );
 }

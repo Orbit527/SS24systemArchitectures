@@ -20,6 +20,7 @@ export default function CancelBooking({ postMappings }) {
 
     return (
         <div>
+            <h2>Cancel Booking</h2>
             <div>
                 <label htmlFor="bookingID">Booking ID:</label>
                 <input
@@ -30,7 +31,7 @@ export default function CancelBooking({ postMappings }) {
                     required
                 />
             </div>
-            <button onClick={handleSubmit}>Cancel Booking</button>
+            <button className="submit-button" onClick={handleSubmit}>Cancel Booking</button>
         </div>
     );
 }
